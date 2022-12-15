@@ -42,7 +42,7 @@ const Navbar = () => {
                     </Link>
                 </Flex>
                 
-                <Flex gap="32px" alignItems="center">
+                <Flex gap="32px" alignItems="center" color="#323232" fontFamily="Poppins">
                     <Link
                         as={LinkRouter}
                         end
@@ -50,11 +50,11 @@ const Navbar = () => {
                         _hover={{
                             textDecoration: "none",
                             color: "#000",
-                            fontWeight: "700"
+                            fontWeight: "900"
                         }}
                         _activeLink={{
                             color: "#000",
-                            fontWeight: "700",
+                            fontWeight: "900",
                         }}
                     >
                         <Text fontWeight="medium" fontSize="16px">
@@ -68,11 +68,11 @@ const Navbar = () => {
                         _hover={{
                             textDecoration: "none",
                             color: "#000",
-                            fontWeight: "700",
+                            fontWeight: "900",
                         }}
                         _activeLink={{
                             color: "#000",
-                            fontWeight: "700",
+                            fontWeight: "900",
                         }}
                     >
                         <Text fontWeight="medium" fontSize="16px">
@@ -85,11 +85,11 @@ const Navbar = () => {
                         _hover={{
                             textDecoration: "none",
                             color: "#000",
-                            fontWeight: "700",
+                            fontWeight: "900",
                         }}
                         _active={{
                             color: "#000",
-                            fontWeight: "700",
+                            fontWeight: "900",
                         }}
                     >
                         <Text fontWeight="medium" fontSize="16px">
@@ -102,11 +102,11 @@ const Navbar = () => {
                         _hover={{
                             textDecoration: "none",
                             color: "#000",
-                            fontWeight: "700",
+                            fontWeight: "900",
                         }}
                         _active={{
                             color: "#000",
-                            fontWeight: "700",
+                            fontWeight: "900",
                         }}
                     >
                         <Text fontWeight="medium" fontSize="16px">
