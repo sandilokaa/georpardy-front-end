@@ -9,14 +9,25 @@ import {
     Button,
     Link
 } from "@chakra-ui/react";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import "../../assets/css/swiper.css";
+import { Pagination } from "swiper";
+
 import HomeLayout from "../../layouts/HomeLayout";
 import ImageMainContent from "../../assets/images/img-content-1.png";
 import GeopardyInformationCard from "../../components/home/GeopardyInformationCard";
+import ImageLandslide from "../../assets/images/tanah-longsor.jpg";
+import ImageLandslide2 from "../../assets/images/tanah-longsor-2.png";
+import ImageLandslide3 from "../../assets/images/tanah-longsor-3.png";
 import AlertIcon from "../../assets/icons/alert.png";
 import OpenIcon from "../../assets/icons/open.png";
 import MailboxIcon from "../../assets/icons/mailbox.png";
 import RadioactiveIcon from "../../assets/icons/radioactive.png";
 import DotVector from "../../assets/icons/dot-vector.svg";
+import AreaInformationSwiper from "../../components/home/AreaInformationSwiper";
 
 const Home = () => {
 
@@ -146,7 +157,7 @@ const Home = () => {
                 </Flex>
                 <Flex gap="40px" position="relative">
                     <Flex display="block" ml="-75px" pos="absolute" mt="-90px">
-                    <Image display="block" src={DotVector} alt="Geopardy Dot Vector" />
+                        <Image display="block" src={DotVector} alt="Geopardy Dot Vector" />
                     </Flex>
                     <GeopardyInformationCard
                         bgColor="#0D72CC"
@@ -174,6 +185,84 @@ const Home = () => {
                     />
                 </Flex>
             </Flex>
+
+            <Flex gap="20px" flexDir={['column', 'row']} mb="100px">
+                <Flex flexDirection="column" gap="20px" w={["100%", "50%"]}>
+                    <Flex w="580px" h="400px">
+                        <Swiper
+                            pagination={{
+                                dynamicBullets: true,
+                            }}
+                            modules={[Pagination]}
+                            className="swiper"
+                        >
+                            <SwiperSlide className="swiper-slide">
+                                <AreaInformationSwiper
+                                    imageLandslide={ImageLandslide}
+                                />
+                            </SwiperSlide>
+                            <SwiperSlide className="swiper-slide">
+                                <AreaInformationSwiper
+                                    imageLandslide={ImageLandslide2}
+                                />
+                            </SwiperSlide>
+                            <SwiperSlide className="swiper-slide">
+                                <AreaInformationSwiper
+                                    imageLandslide={ImageLandslide3}
+                                />
+                            </SwiperSlide>
+                        </Swiper>
+                    </Flex>
+                </Flex>
+                <Flex w="50%" flexDirection="column" mt="2%">
+                    <Box>
+                        <Heading fontSize="48px" fontWeight="900" fontFamily="Poppins" color="#323232">
+                            Sebaran daerah rawan
+                            <Heading as="span" color="#0D72CC" fontSize="48px" fontWeight="900" ml="14px" mr="14px">
+                                tanah longsor
+                            </Heading>
+                        </Heading>
+                        <Text
+                            fontSize="20px"
+                            fontWeight="medium"
+                            color="#777777"
+                            mb="12px"
+                            mt="25px"
+                            fontFamily="Poppins"
+                        >
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                        </Text>
+                        <Text
+                            fontSize="20px"
+                            fontWeight="medium"
+                            color="#323232"
+                            mb="12px"
+                            mt="25px"
+                            fontFamily="Poppins"
+                        >
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                            Deserunt perferendis magni molestiae tempore accusantium nobis recusandae soluta velit.
+                        </Text>
+                        <Link
+                            as={LinkRouter}
+                            to="/area-distribution"
+                            textDecoration="none"
+                            _hover={{ textDecoration: "none" }}
+                        >
+                            <Button
+                                variant="solid"
+                                bgColor="#0D72CC"
+                                color="white"
+                                _hover={{ bgColor: "#0D72CC" }}
+                                _active={{ bgColor: "#0D72CC" }}
+                            >
+                                Eksplor Daerah
+                            </Button>
+                        </Link>
+                    </Box>
+                </Flex>
+            </Flex>
+
         </HomeLayout >
 
     );
