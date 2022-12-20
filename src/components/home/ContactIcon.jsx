@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Image, Link } from "@chakra-ui/react";
+import { Flex, Image } from "@chakra-ui/react";
 
 const ContactIcon = ({ icon, title, linkContact }) => {
 
@@ -12,9 +12,9 @@ const ContactIcon = ({ icon, title, linkContact }) => {
             borderRadius="full"
             background="#FFFFFF"
         >
-            <Link to={linkContact}>
+            <a href={linkContact} >
                 <Image maxW="22px" src={icon} alt={title} />
-            </Link>
+            </a>
         </Flex>
 
     );
