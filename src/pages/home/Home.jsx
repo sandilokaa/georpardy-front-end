@@ -27,7 +27,12 @@ import OpenIcon from "../../assets/icons/open.png";
 import MailboxIcon from "../../assets/icons/mailbox.png";
 import RadioactiveIcon from "../../assets/icons/radioactive.png";
 import DotVector from "../../assets/icons/dot-vector.svg";
+import InstagramIcon from "../../assets/icons/instagram.png";
+import GmailIcon from "../../assets/icons/gmail.png";
+import TwitterIcon from "../../assets/icons/twitter.png";
+import WhatsappIcon from "../../assets/icons/whatsapp.png";
 import AreaInformationSwiper from "../../components/home/AreaInformationSwiper";
+import ContactIcon from "../../components/home/ContactIcon";
 
 const Home = () => {
 
@@ -37,16 +42,16 @@ const Home = () => {
 
             <Flex
                 gap="40px"
-                mt="60px"
+                mt="40px"
                 justifyContent="space-between"
                 alignItems="center"
             >
                 <Flex flexDirection="column" w={["100%", "51%"]} gap="20px">
-                    <Flex w="full" flexDirection="column" mt="60px">
+                    <Flex w="full" flexDirection="column" mt="40px">
                         <Box>
-                            <Heading fontSize="48px" fontWeight="900" fontFamily="Poppins" color="#323232">
+                            <Heading fontSize="48px" fontWeight="black" fontFamily="Poppins" color="#323232">
                                 Temukan
-                                <Heading as="span" color="#0D72CC" fontSize="48px" fontWeight="900" ml="14px" mr="14px">
+                                <Heading as="span" color="#0D72CC" fontSize="48px" fontWeight="black" ml="14px" mr="14px">
                                     lokasi yang cocok
                                 </Heading>
                                 untuk bangun rumah tinggal
@@ -55,7 +60,7 @@ const Home = () => {
                     </Flex>
                     <Text
                         fontSize="20px"
-                        fontWeight="medium"
+                        fontWeight="regular"
                         color="#323232"
                         mb="12px"
                         mt="10px"
@@ -94,13 +99,13 @@ const Home = () => {
                 <Flex flexDirection="column" w={["100%", "32%"]} gap="20px">
                     <Flex w="full" flexDirection="column">
                         <Box>
-                            <Heading fontSize="48px" fontWeight="900" fontFamily="Poppins" color="#323232">
+                            <Heading fontSize="48px" fontWeight="black" fontFamily="Poppins" color="#323232">
                                 Cerita dibalik
                             </Heading>
-                            <Heading color="#0D72CC" fontSize="48px" fontWeight="900" fontFamily="Poppins">
+                            <Heading color="#0D72CC" fontSize="48px" fontWeight="black" fontFamily="Poppins">
                                 Geopardy
                             </Heading>
-                            <Heading color="#0D72CC" fontSize="48px" fontWeight="900" fontFamily="Poppins">
+                            <Heading color="#0D72CC" fontSize="48px" fontWeight="black" fontFamily="Poppins">
                                 Project
                             </Heading>
                         </Box>
@@ -109,7 +114,7 @@ const Home = () => {
 
                 <Text
                     fontSize="20px"
-                    fontWeight="medium"
+                    fontWeight="regular"
                     color="#323232"
                     mb="12px"
                     mt="10px"
@@ -137,16 +142,16 @@ const Home = () => {
             >
                 <Flex flexDirection="column" mt="60px" alignItems="center">
                     <Box>
-                        <Heading fontSize="48px" fontWeight="900" fontFamily="Poppins" color="#323232">
+                        <Heading fontSize="48px" fontWeight="black" fontFamily="Poppins" color="#323232">
                             Mengapa harus
-                            <Heading as="span" color="#0D72CC" fontSize="48px" fontWeight="900" ml="14px" mr="14px">
+                            <Heading as="span" color="#0D72CC" fontSize="48px" fontWeight="black" ml="14px" mr="14px">
                                 Geopardy?
                             </Heading>
                         </Heading>
                     </Box>
                     <Text
                         fontSize="20px"
-                        fontWeight="medium"
+                        fontWeight="regular"
                         color="#323232"
                         mb="12px"
                         mt="25px"
@@ -214,34 +219,34 @@ const Home = () => {
                         </Swiper>
                     </Flex>
                 </Flex>
-                <Flex w="50%" flexDirection="column" mt="2%">
+                <Flex w="50%" flexDirection="column" mt="1%">
                     <Box>
-                        <Heading fontSize="48px" fontWeight="900" fontFamily="Poppins" color="#323232">
+                        <Heading fontSize="48px" fontWeight="black" fontFamily="Poppins" color="#323232">
                             Sebaran daerah rawan
-                            <Heading as="span" color="#0D72CC" fontSize="48px" fontWeight="900" ml="14px" mr="14px">
+                            <Heading as="span" color="#0D72CC" fontSize="48px" fontWeight="black" ml="14px" mr="14px">
                                 tanah longsor
                             </Heading>
                         </Heading>
                         <Text
                             fontSize="20px"
-                            fontWeight="medium"
+                            fontWeight="regular"
                             color="#777777"
                             mb="12px"
-                            mt="25px"
+                            mt="20px"
                             fontFamily="Poppins"
                         >
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                            Informasi akurat sebaran daerah rawan tanah longsor di Kota Semarang
                         </Text>
                         <Text
                             fontSize="20px"
-                            fontWeight="medium"
+                            fontWeight="regular"
                             color="#323232"
-                            mb="12px"
-                            mt="25px"
+                            mb="20px"
+                            mt="20px"
                             fontFamily="Poppins"
                         >
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                            Deserunt perferendis magni molestiae tempore accusantium nobis recusandae soluta velit.
+                            Topografi Kota Semarang yang memiliki dataran rendah dan dataran tinggi maka perlu
+                            adanya sistem informasi untuk melihat daerah rawan tanah longsor.
                         </Text>
                         <Link
                             as={LinkRouter}
@@ -261,6 +266,64 @@ const Home = () => {
                         </Link>
                     </Box>
                 </Flex>
+            </Flex>
+
+            <Flex
+                mt="40px"
+                mb="60px"
+                alignItems="center"
+                w="100%"
+                flexDirection="column"
+            >
+                <Flex flexDirection="column" alignItems="center" background="linear-gradient(180deg, #0D72CC 0%, #0FF9E7 157.97%)" padding="4% 24%" borderRadius="20px">
+                    <Heading fontSize="32px" fontWeight="bold" fontFamily="Poppins" color="#FFFFFF">
+                        Mari berbicara dengan Geopardy
+                    </Heading>
+                    <Text
+                        fontSize="20px"
+                        fontWeight="regular"
+                        color="#FFFFFF"
+                        mb="12px"
+                        mt="25px"
+                        fontFamily="Poppins"
+                        textAlign="center"
+                    >
+                        Ayo berbicara dengan Geopardy untuk mencari informasi lebih jelas mengenai daerah rawan longsor di Kota Semarang.
+                    </Text>
+
+                    <Flex flexDirection="row" gap="20px" mt="10px">
+                        <ContactIcon
+                            icon={InstagramIcon}
+                            title="Geopardy Instagram"
+                        />
+                        <ContactIcon
+                            icon={WhatsappIcon}
+                            title="Geopardy WhatsApp"
+                        />
+                        <ContactIcon
+                            icon={TwitterIcon}
+                            title="Geopardy Twitter"
+                        />
+                        <ContactIcon
+                            icon={GmailIcon}
+                            title="Geopardy Gmail"
+                        />
+                    </Flex>
+                </Flex>
+            </Flex>
+
+
+            <Flex flexDirection="column" alignItems="center">
+                <Text
+                    fontSize="14px"
+                    fontWeight="regular"
+                    color="#323232"
+                    mb="12px"
+                    fontFamily="Poppins"
+                    display="inline"
+                >
+                    © 2022 Geopardy. All rights reserved!. Powered by Sandi Loka
+                </Text>
             </Flex>
 
         </HomeLayout >
