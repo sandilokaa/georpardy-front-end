@@ -42,7 +42,7 @@ const Navbar = () => {
                     </Link>
                 </Flex>
                 
-                <Flex gap="32px" alignItems="center" color="#323232" fontFamily="Poppins">
+                <Flex gap="32px" alignItems="center" color="#323232" fontFamily="Montserrat">
                     <Link
                         as={LinkRouter}
                         end

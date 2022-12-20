@@ -34,10 +34,10 @@ const GeopardyInformationCard = ({ icon, title, bgColor, paragraph }) => {
                 >
                     <Image maxW="42px" src={icon} alt={title} />
                 </Flex>
-                <Heading fontSize="22px" fontWeight="700" fontFamily="Poppins" color="#323232">
+                <Heading fontSize="22px" fontWeight="bold" fontFamily="Poppins" color="#323232">
                     {title}
                 </Heading>
-                <Text fontSize="20px" fontWeight="500" color="#323232" fontFamily="Poppins">
+                <Text fontSize="20px" fontWeight="regular" color="#323232" fontFamily="Poppins">
                     {paragraph}
                 </Text>
             </Flex>
