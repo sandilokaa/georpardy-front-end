@@ -4,12 +4,9 @@ import {
     Box,
     Flex,
     Heading,
-    Text,
     Image,
     Button,
-    Link,
-    Input,
-    Divider
+    Input
 } from "@chakra-ui/react";
 import HomeLayout from "../../layouts/HomeLayout";
 import SearchIcon from "../../assets/icons/search.png";
