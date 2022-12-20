@@ -1,7 +1,7 @@
 import React from "react";
-import { Flex, Image } from "@chakra-ui/react";
+import { Flex, Image, Link } from "@chakra-ui/react";
 
-const ContactIcon = ({ icon, title }) => {
+const ContactIcon = ({ icon, title, linkContact }) => {
 
     return (
 
@@ -12,7 +12,9 @@ const ContactIcon = ({ icon, title }) => {
             borderRadius="full"
             background="#FFFFFF"
         >
-            <Image maxW="22px" src={icon} alt={title} />
+            <Link to={linkContact}>
+                <Image maxW="22px" src={icon} alt={title} />
+            </Link>
         </Flex>
 
     );
