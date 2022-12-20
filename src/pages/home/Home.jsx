@@ -71,7 +71,7 @@ const Home = () => {
                     </Text>
                     <Link
                         as={LinkRouter}
-                        to="/login"
+                        to="/area-distribution"
                         textDecoration="none"
                         _hover={{ textDecoration: "none" }}
                     >
@@ -285,6 +285,7 @@ const Home = () => {
                         color="#FFFFFF"
                         mb="12px"
                         mt="25px"
+                        w={["110%"]}
                         fontFamily="Poppins"
                         textAlign="center"
                     >
@@ -295,18 +296,22 @@ const Home = () => {
                         <ContactIcon
                             icon={InstagramIcon}
                             title="Geopardy Instagram"
+                            linkContact={`https://instagram.com/sandi.laa`}
                         />
                         <ContactIcon
                             icon={WhatsappIcon}
                             title="Geopardy WhatsApp"
+                            linkContact={`https://instagram.com/sandi.laa`}
                         />
                         <ContactIcon
                             icon={TwitterIcon}
                             title="Geopardy Twitter"
+                            linkContact={`https://instagram.com/sandi.laa`}
                         />
                         <ContactIcon
                             icon={GmailIcon}
                             title="Geopardy Gmail"
+                            linkContact={`https://instagram.com/sandi.laa`}
                         />
                     </Flex>
                 </Flex>
