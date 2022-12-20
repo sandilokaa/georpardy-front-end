@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink as LinkRouter } from "react-router-dom";
+// import { NavLink as LinkRouter } from "react-router-dom";
 import {
     Box,
     Flex,
@@ -23,7 +23,7 @@ const AreaDistribution = () => {
                 w="100%"
                 flexDirection="column"
             >
-                <Flex position="relative" flexDirection="column" alignItems="center" background="linear-gradient(180deg, #0D72CC 0%, #0FF9E7 157.97%)" padding="4% 24% 12%" borderRadius="20px">
+                <Flex position="relative" flexDirection="column" alignItems="center" background="linear-gradient(180deg, #0D72CC 0%, #0FF9E7 157.97%)" padding="4% 24% 8%" borderRadius="20px">
                     <Heading fontSize="48px" fontWeight="bold" fontFamily="Poppins" color="#FFFFFF" w={["150%"]} textAlign="center">
                         Kecamatan di Kota Semarang
                     </Heading>
@@ -35,7 +35,7 @@ const AreaDistribution = () => {
                         boxShadow="0px 2px 4px 2px rgba(15, 249, 231, 0.25), inset 0px 2px 4px rgba(0, 0, 0, 0.25);"
                         w={["100%", "650px"]}
                         h="80px"
-                        mt="150px"
+                        mt="110px"
                         background="#FFFFFF"
                         position="absolute"
                     >
