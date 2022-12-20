@@ -42,7 +42,7 @@ const Navbar = () => {
                     </Link>
                 </Flex>
                 
-                <Flex gap="32px" alignItems="center" color="#323232" fontFamily="Montserrat">
+                <Flex gap="32px" alignItems="center" color="#323232" fontFamily="Poppins">
                     <Link
                         as={LinkRouter}
                         end
@@ -50,14 +50,14 @@ const Navbar = () => {
                         _hover={{
                             textDecoration: "none",
                             color: "#000",
-                            fontWeight: "900"
+                            fontWeight: "medium"
                         }}
                         _activeLink={{
                             color: "#000",
-                            fontWeight: "900",
+                            fontWeight: "medium",
                         }}
                     >
-                        <Text fontWeight="medium" fontSize="16px">
+                        <Text fontWeight="regular" fontSize="16px">
                             Home
                         </Text>
                     </Link>
@@ -68,14 +68,14 @@ const Navbar = () => {
                         _hover={{
                             textDecoration: "none",
                             color: "#000",
-                            fontWeight: "900",
+                            fontWeight: "medium",
                         }}
                         _activeLink={{
                             color: "#000",
-                            fontWeight: "900",
+                            fontWeight: "medium",
                         }}
                     >
-                        <Text fontWeight="medium" fontSize="16px">
+                        <Text fontWeight="regular" fontSize="16px">
                             Area Distribution
                         </Text>
                     </Link>
@@ -85,14 +85,14 @@ const Navbar = () => {
                         _hover={{
                             textDecoration: "none",
                             color: "#000",
-                            fontWeight: "900",
+                            fontWeight: "medium",
                         }}
                         _active={{
                             color: "#000",
-                            fontWeight: "900",
+                            fontWeight: "medium",
                         }}
                     >
-                        <Text fontWeight="medium" fontSize="16px">
+                        <Text fontWeight="regular" fontSize="16px">
                             Behind Project
                         </Text>
                     </Link>
@@ -102,14 +102,14 @@ const Navbar = () => {
                         _hover={{
                             textDecoration: "none",
                             color: "#000",
-                            fontWeight: "900",
+                            fontWeight: "medium",
                         }}
                         _active={{
                             color: "#000",
-                            fontWeight: "900",
+                            fontWeight: "medium",
                         }}
                     >
-                        <Text fontWeight="medium" fontSize="16px">
+                        <Text fontWeight="regular" fontSize="16px">
                             Contact Us
                         </Text>
                     </Link>
