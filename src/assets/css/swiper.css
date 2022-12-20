@@ -4,6 +4,19 @@
     border-radius: 20px;
 }
 
+.swiper-pagination-bullet{
+    background: #fff;
+    width: 12px;
+    height: 12px;
+    opacity: 1;
+}
+
+.swiper-pagination-bullet-active{
+    background-color: #000;
+    width: 12px;
+    height: 12px;
+}
+
 .swiper-slide {
     background: transparent;
 }
