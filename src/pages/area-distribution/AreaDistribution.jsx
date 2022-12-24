@@ -6,16 +6,20 @@ import {
     Heading,
     Image,
     Button,
-    Input
+    Input,
+    Grid
 } from "@chakra-ui/react";
 import HomeLayout from "../../layouts/HomeLayout";
 import SearchIcon from "../../assets/icons/search.png";
+import AreaDistributionCard from "../../components/area-distribution/AreaDistributionCard";
+import ImageLandslide from "../../assets/images/tanah-longsor.jpg";
 
 const AreaDistribution = () => {
 
     return (
 
         <HomeLayout>
+
             <Flex
                 mt="40px"
                 mb="60px"
@@ -44,7 +48,7 @@ const AreaDistribution = () => {
                         </Box>
                         <Input
                             placeholder="Cari untuk temukan kecamatan"
-                            color="#CECECE"
+                            color="#323232"
                             variant="unstyled"
                             w="100%"
                             fontSize="20px"
@@ -63,6 +67,35 @@ const AreaDistribution = () => {
                     </Flex>
                 </Flex>
             </Flex>
+
+            <Flex position="relative">
+                <Grid w="100%" templateColumns="repeat(4, 1fr)" gap={12}>
+                    <AreaDistributionCard
+                        districtPicture={ImageLandslide}
+                        title="Kecamatan Tembalang"
+                        districtName="Kecamatan Tembalang"
+                    />
+
+                    <AreaDistributionCard
+                        districtPicture={ImageLandslide}
+                        title="Kecamatan Tembalang"
+                        districtName="Kecamatan Tembalang"
+                    />
+
+                    <AreaDistributionCard
+                        districtPicture={ImageLandslide}
+                        title="Kecamatan Tembalang"
+                        districtName="Kecamatan Tembalang"
+                    />
+
+                    <AreaDistributionCard
+                        districtPicture={ImageLandslide}
+                        title="Kecamatan Tembalang"
+                        districtName="Kecamatan Tembalang"
+                    />
+                </Grid>
+            </Flex>
+
         </HomeLayout>
 
     );
