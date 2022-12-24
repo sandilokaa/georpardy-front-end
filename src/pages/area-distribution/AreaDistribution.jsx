@@ -52,7 +52,7 @@ const AreaDistribution = () => {
         onSearch();
     }, [districtField]);
 
-    
+
     const onReset = () => {
         districtField.current.value = ""
 
@@ -104,6 +104,7 @@ const AreaDistribution = () => {
                             variant="solid"
                             bgColor="#0D72CC"
                             color="white"
+                            padding="0 6%"
                             mr="2%"
                             _hover={{ bgColor: "#0D72CC" }}
                             onClick={onSearch}
@@ -114,6 +115,7 @@ const AreaDistribution = () => {
                             variant="solid"
                             bgColor="#EB455F"
                             color="white"
+                            padding="0 6%"
                             mr="2%"
                             _hover={{ bgColor: "#EB455F" }}
                             onClick={onReset}
