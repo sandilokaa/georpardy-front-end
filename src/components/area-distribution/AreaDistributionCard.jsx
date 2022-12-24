@@ -22,8 +22,8 @@ const AreaDistributionCard = ({ districtName, title, districtPicture  }) => {
                 maxH="300px"
                 maxW="277px"
                 gap="30px"
-                padding="0 15px"
-                mb="20px"
+                padding="0 12px"
+                mb="10px"
                 justifyContent="center"
                 alignItems="center"
                 textAlign="center"
@@ -36,7 +36,7 @@ const AreaDistributionCard = ({ districtName, title, districtPicture  }) => {
                 >
                     <Image borderRadius="10px" maxW="240px" src={districtPicture} alt={title} />
                 </Flex>
-                <Heading fontSize="20px" fontWeight="medium" fontFamily="Poppins" color="#323232">
+                <Heading fontSize="20px" mb="10px" fontWeight="medium" fontFamily="Poppins" color="#323232">
                     {districtName}
                 </Heading>
             </Flex>
