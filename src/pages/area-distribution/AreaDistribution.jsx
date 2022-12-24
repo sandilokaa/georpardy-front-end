@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 // import { NavLink as LinkRouter } from "react-router-dom";
 import {
     Box,
@@ -7,14 +7,58 @@ import {
     Image,
     Button,
     Input,
-    Grid
+    Grid,
+    GridItem
 } from "@chakra-ui/react";
 import HomeLayout from "../../layouts/HomeLayout";
 import SearchIcon from "../../assets/icons/search.png";
 import AreaDistributionCard from "../../components/area-distribution/AreaDistributionCard";
-import ImageLandslide from "../../assets/images/tanah-longsor.jpg";
+import axios from "axios";
+
 
 const AreaDistribution = () => {
+
+    const [districtData, setDistrictData] = useState();
+
+    const districtField = useRef();
+
+
+    const onSearch = async () => {
+
+        const getDistrictName = districtField.current.value;
+
+        try {
+
+            const getDistrictDataRequest = await axios.get(
+                `http://localhost:8080/v1/sub-district/results?districtName=${getDistrictName}`,
+                {
+                    headers: {
+                        "Access-Control-Allow-Origin": "*"
+                    }
+                }
+            );
+
+            const getDistrictDataResponse = getDistrictDataRequest.data;
+
+            setDistrictData(getDistrictDataResponse.data.subDistrictData);
+
+        } catch (err) {
+            alert(err.message);
+        }
+
+    };
+
+    useEffect(() => {
+        onSearch();
+    }, [districtField]);
+
+    
+    const onReset = () => {
+        districtField.current.value = ""
+
+        onSearch();
+    };
+
 
     return (
 
@@ -54,15 +98,27 @@ const AreaDistribution = () => {
                             fontSize="20px"
                             fontWeight="regular"
                             ml="50px"
+                            ref={districtField}
                         />
                         <Button
                             variant="solid"
                             bgColor="#0D72CC"
                             color="white"
+                            mr="2%"
                             _hover={{ bgColor: "#0D72CC" }}
-                            _active={{ bgColor: "#0D72CC" }}
+                            onClick={onSearch}
                         >
                             Cari
+                        </Button>
+                        <Button
+                            variant="solid"
+                            bgColor="#EB455F"
+                            color="white"
+                            mr="2%"
+                            _hover={{ bgColor: "#EB455F" }}
+                            onClick={onReset}
+                        >
+                            Reset
                         </Button>
                     </Flex>
                 </Flex>
@@ -70,29 +126,19 @@ const AreaDistribution = () => {
 
             <Flex position="relative">
                 <Grid w="100%" templateColumns="repeat(4, 1fr)" gap={12}>
-                    <AreaDistributionCard
-                        districtPicture={ImageLandslide}
-                        title="Kecamatan Tembalang"
-                        districtName="Kecamatan Tembalang"
-                    />
-
-                    <AreaDistributionCard
-                        districtPicture={ImageLandslide}
-                        title="Kecamatan Tembalang"
-                        districtName="Kecamatan Tembalang"
-                    />
-
-                    <AreaDistributionCard
-                        districtPicture={ImageLandslide}
-                        title="Kecamatan Tembalang"
-                        districtName="Kecamatan Tembalang"
-                    />
-
-                    <AreaDistributionCard
-                        districtPicture={ImageLandslide}
-                        title="Kecamatan Tembalang"
-                        districtName="Kecamatan Tembalang"
-                    />
+                    {districtData != null ?
+                        districtData.map((item) => {
+                            return (
+                                <GridItem key={item.id}>
+                                    <AreaDistributionCard
+                                        districtPicture={item.picture}
+                                        title={item.districtName}
+                                        districtName={item.districtName}
+                                    />
+                                </GridItem>
+                            )
+                        }) : null
+                    }
                 </Grid>
             </Flex>
 
