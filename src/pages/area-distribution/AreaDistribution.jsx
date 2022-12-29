@@ -133,6 +133,7 @@ const AreaDistribution = () => {
                             return (
                                 <GridItem key={item.id}>
                                     <AreaDistributionCard
+                                        districtId={item.id}
                                         districtPicture={item.picture}
                                         title={item.districtName}
                                         districtName={item.districtName}

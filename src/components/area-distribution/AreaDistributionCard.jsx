@@ -1,7 +1,10 @@
 import React from "react";
 import { Flex, Heading, Image } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
-const AreaDistributionCard = ({ districtName, title, districtPicture  }) => {
+const AreaDistributionCard = ({ districtName, title, districtPicture, districtId  }) => {
+
+    const navigate = useNavigate();
 
     return (
         <Flex
@@ -16,6 +19,7 @@ const AreaDistributionCard = ({ districtName, title, districtPicture  }) => {
             zIndex="100"
             transition="0.4s all ease-in-out"
             _hover={{ boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)", cursor: "pointer"}}
+            onClick={() => navigate(`/area-distribution/detail/${districtId}`)}
         >
             <Flex
                 flexDirection="column"
