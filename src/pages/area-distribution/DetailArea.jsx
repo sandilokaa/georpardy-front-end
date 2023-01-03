@@ -4,12 +4,12 @@ import {
     Flex,
     Heading,
     Text,
-    Image,
     Button
 } from "@chakra-ui/react";
 import { useLocation } from "react-router-dom";
 import HomeLayout from "../../layouts/HomeLayout";
 import axios from "axios";
+import MapWrapped from "../../components/area-distribution/MapWrapped";
 
 const DetailArea = () => {
 
@@ -54,7 +54,7 @@ const DetailArea = () => {
             <Flex
                 gap="40px"
                 mt="40px"
-                mb="40px"
+                mb="20px"
                 justifyContent="space-between"
                 alignItems="center"
             >
@@ -145,6 +145,21 @@ const DetailArea = () => {
                         </Button>
                     </Flex>
 
+                </Flex>
+
+                <Flex
+                    flexDirection="column"
+                    bg="transparent"
+                    gap="16px"
+                    maxW="100%"
+                    zIndex="1"
+                    w={["100%", "49%"]}
+                >
+                    <Box w={["100%", "560px"]} maxH="620px">
+                        <MapWrapped
+                            centerCoordinates={[-6.966667, 110.416664]}
+                        />
+                    </Box>
                 </Flex>
 
             </Flex>
