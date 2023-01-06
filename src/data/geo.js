@@ -4,7 +4,7 @@ export const statesData = {
         {
             type: "Feature",
             id: "2",
-            properties: { name: "Tembalang", density: 94.65 },
+            properties: { name: "Tembalang", density: 94.65, riskLevel: "Kerawanan Rendah" },
             geometry: {
                 type: "Polygon",
                 coordinates: [
@@ -2228,7 +2228,7 @@ export const statesData = {
         {
             type: "Feature",
             id: "3",
-            properties: { name: "Banyumanik", density: 80.65 },
+            properties: { name: "Banyumanik", density: 80.65, riskLevel: "Kerawanan Rendah" },
             geometry: {
                 type: "Polygon",
                 coordinates: [
@@ -5436,7 +5436,7 @@ export const statesData = {
         {
             type: "Feature",
             id: "4",
-            properties: { name: "Pedurungan", density: 94.65 },
+            properties: { name: "Pedurungan", density: 94.65, riskLevel: "Kerawanan Rendah" },
             geometry: {
                 type: "Polygon",
                 coordinates: [
@@ -7624,7 +7624,7 @@ export const statesData = {
         {
             type: "Feature",
             id: "5",
-            properties: { name: "Candisari", density: 94.65 },
+            properties: { name: "Candisari", density: 94.65, riskLevel: "Kerawanan Sedang" },
             geometry: {
                 type: "Polygon",
                 coordinates: [
@@ -8408,7 +8408,7 @@ export const statesData = {
         {
             type: "Feature",
             id: "6",
-            properties: { name: "Gajahmungkur", density: 94.65 },
+            properties: { name: "Gajahmungkur", density: 94.65, riskLevel: "Kerawanan Sedang" },
             geometry: {
                 type: "Polygon",
                 coordinates: [
@@ -9768,7 +9768,7 @@ export const statesData = {
         {
             type: "Feature",
             id: "7",
-            properties: { name: "Gayamsari", density: 94.65 },
+            properties: { name: "Gayamsari", density: 94.65, riskLevel: "Kerawanan Rendah" },
             geometry: {
                 type: "Polygon",
                 coordinates: [
@@ -10680,7 +10680,7 @@ export const statesData = {
         {
             type: "Feature",
             id: "8",
-            properties: { name: "Genuk", density: 94.65 },
+            properties: { name: "Genuk", density: 94.65, riskLevel: "Kerawanan Sedang" },
             geometry: {
                 type: "Polygon",
                 coordinates: [
@@ -12052,7 +12052,7 @@ export const statesData = {
         {
             type: "Feature",
             id: "9",
-            properties: { name: "Gunungpati", density: 94.65 },
+            properties: { name: "Gunungpati", density: 94.65, riskLevel: "Kerawanan Tinggi" },
             geometry: {
                 type: "Polygon",
                 coordinates: [
@@ -16956,7 +16956,7 @@ export const statesData = {
         {
             type: "Feature",
             id: "10",
-            properties: { name: "Mijen", density: 94.65 },
+            properties: { name: "Mijen", density: 94.65, riskLevel: "Sangat Rawan" },
             geometry: {
                 type: "Polygon",
                 coordinates: [
@@ -21764,7 +21764,7 @@ export const statesData = {
         {
             type: "Feature",
             id: "11",
-            properties: { name: "Ngaliyan", density: 94.65 },
+            properties: { name: "Ngaliyan", density: 94.65, riskLevel: "Kerawanan Sedang" },
             geometry: {
                 type: "Polygon",
                 coordinates: [
@@ -24620,7 +24620,7 @@ export const statesData = {
         {
             type: "Feature",
             id: "12",
-            properties: { name: "Semarang Barat", density: 94.65 },
+            properties: { name: "Semarang Barat", density: 94.65, riskLevel: "Kerawanan Sedang" },
             geometry: {
                 type: "Polygon",
                 coordinates: [
@@ -25688,7 +25688,7 @@ export const statesData = {
         {
             type: "Feature",
             id: "13",
-            properties: { name: "Semarang Selatan", density: 94.65 },
+            properties: { name: "Semarang Selatan", density: 94.65, riskLevel: "Kerawanan Sedang" },
             geometry: {
                 type: "Polygon",
                 coordinates: [
@@ -26608,7 +26608,7 @@ export const statesData = {
         {
             type: "Feature",
             id: "14",
-            properties: { name: "Semarang Tengah", density: 94.65 },
+            properties: { name: "Semarang Tengah", density: 94.65, riskLevel: "Tidak rawan" },
             geometry: {
                 type: "Polygon",
                 coordinates: [
@@ -27208,7 +27208,7 @@ export const statesData = {
         {
             type: "Feature",
             id: "15",
-            properties: { name: "Semarang Timur", density: 94.65 },
+            properties: { name: "Semarang Timur", density: 94.65, riskLevel: "Kerawanan Rendah" },
             geometry: {
                 type: "Polygon",
                 coordinates: [
@@ -27968,7 +27968,7 @@ export const statesData = {
         {
             type: "Feature",
             id: "16",
-            properties: { name: "Semarang Utara", density: 94.65 },
+            properties: { name: "Semarang Utara", density: 94.65, riskLevel: "Kerawanan Tinggi" },
             geometry: {
                 type: "Polygon",
                 coordinates: [
@@ -29188,7 +29188,7 @@ export const statesData = {
         {
             type: "Feature",
             id: "17",
-            properties: { name: "Tugu", density: 94.65 },
+            properties: { name: "Tugu", density: 94.65, riskLevel: "Kerawanan Tinggi" },
             geometry: {
                 type: "Polygon",
                 coordinates: [
