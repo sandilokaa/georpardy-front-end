@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import {
     MapContainer,
@@ -7,6 +7,7 @@ import {
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { statesData } from "../../data/geo";
+import axios from "axios";
 
 const MapWrapped = ({ centerCoordinates }) => {
 
@@ -14,15 +15,47 @@ const MapWrapped = ({ centerCoordinates }) => {
 
     const districtId = (params.pathname).split('/')[3];
 
+    const [districtData, setDistrictData] = useState();
+
+    useEffect(() => {
+
+        const onSearch = async () => {
+
+            try {
+
+                const getDistrictDataRequest = await axios.get(
+                    `http://localhost:8080/v1/sub-district/results/${districtId}`,
+                    {
+                        headers: {
+                            "Access-Control-Allow-Origin": "*"
+                        }
+                    }
+                );
+
+                const getDistrictDataResponse = getDistrictDataRequest.data;
+
+                setDistrictData(getDistrictDataResponse.data.subDistrictData);
+
+            } catch (err) {
+                alert(err.message);
+            }
+
+        };
+
+        onSearch();
+
+    }, [districtId]);
+
+    
     return (
 
         <MapContainer
             center={centerCoordinates}
             zoom={12}
             style={{
-                width: '100%',
-                height: '630px',
-                borderRadius: '20px'
+                width: "100%",
+                height: "630px",
+                borderRadius: "20px"
             }}
         >
             <TileLayer
@@ -36,15 +69,28 @@ const MapWrapped = ({ centerCoordinates }) => {
 
                         const coordinates = state.geometry.coordinates[0].map((item) => [item[1], item[0]]);
 
+                        const handleColor = state.properties.riskLevel === "Tidak Rawan" ? 
+                                            "#82CD47" : 
+                                            state.properties.riskLevel === "Kerawanan Rendah" ? 
+                                            "#FFD56F" :
+                                            state.properties.riskLevel === "Kerawanan Sedang" ?
+                                            "#FFB26B" :
+                                            state.properties.riskLevel === "Kerawanan Tinggi" ?
+                                            "#FF7B54" :
+                                            state.properties.riskLevel === "Sangat Rawan" ?
+                                            "#D9534F" :
+                                            "#82CD47";
+
                         return (
                             <Polygon
+                                key={districtId}
                                 pathOptions={{
-                                    fillColor: '#FD8D3C',
+                                    fillColor: `${handleColor}`,
                                     fillOpacity: 0.7,
                                     weight: 2,
                                     opacity: 1,
                                     dashArray: 3,
-                                    color: 'white'
+                                    color: "#323232"
                                 }}
                                 positions={coordinates}
                                 eventHandlers={{
@@ -52,7 +98,7 @@ const MapWrapped = ({ centerCoordinates }) => {
                                         const layer = e.target;
                                         layer.setStyle({
                                             dashArray: "",
-                                            fillColor: "#D45962",
+                                            fillColor: `${handleColor}`,
                                             fillOpacity: 0.7,
                                             weight: 2,
                                             opacity: 1,
@@ -65,8 +111,8 @@ const MapWrapped = ({ centerCoordinates }) => {
                                             fillOpacity: 0.7,
                                             weight: 2,
                                             dashArray: "3",
-                                            color: 'white',
-                                            fillColor: '#FD8D3C'
+                                            color: "#323232",
+                                            fillColor: `${handleColor}`,
                                         });
                                     },
                                     click: (e) => {
