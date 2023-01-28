@@ -316,21 +316,6 @@ const Home = () => {
                     </Flex>
                 </Flex>
             </Flex>
-
-
-            <Flex flexDirection="column" alignItems="center">
-                <Text
-                    fontSize="14px"
-                    fontWeight="regular"
-                    color="#323232"
-                    mb="12px"
-                    fontFamily="Poppins"
-                    display="inline"
-                >
-                    © 2022 Geopardy. All rights reserved!. Powered by Sandi Loka
-                </Text>
-            </Flex>
-
         </HomeLayout >
 
     );

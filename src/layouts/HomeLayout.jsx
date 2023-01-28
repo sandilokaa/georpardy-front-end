@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Container } from "@chakra-ui/react";
 import Navbar from "../components/navbar/Navbar";
+import Footer from "../components/footer/Footer";
 
 const HomeLayout = ({ children }) => {
     return (
@@ -11,6 +12,9 @@ const HomeLayout = ({ children }) => {
             <Container maxW="1200px" pt="65px" centerContent>
                 {children}
             </Container>
+            <Box display="block">
+                <Footer />
+            </Box>
         </Box>
     );
 };
