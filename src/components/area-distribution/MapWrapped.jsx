@@ -19,7 +19,8 @@ const MapWrapped = ({ centerCoordinates }) => {
 
     const [trueResponse, setTrueResponse] = useState({
         isTrue: false,
-        message: ""
+        message: "",
+        url: ""
     });
 
     const params = useLocation();
@@ -59,10 +60,18 @@ const MapWrapped = ({ centerCoordinates }) => {
 
     function onMapClick(e) {
 
+        let coordinatesLatLng = e.latlng;
+
+        console.log(coordinatesLatLng.lat);
+        console.log(coordinatesLatLng.lng);
+
         setTrueResponse({
             isTrue: true,
-            message: "You clicked the map at " + e.latlng
+            message: `You clicked the map at ` + e.latlng,
+            url: `http://maps.google.com/maps?z=18&q=${coordinatesLatLng.lat},${coordinatesLatLng.lng}`
         });
+
+        // tautan http://maps.google.com/maps?z=18&q=10.8061,106.7130
 
     };
 
@@ -83,6 +92,7 @@ const MapWrapped = ({ centerCoordinates }) => {
                     <Alert
                         status='info'
                         style={{
+                            borderRadius: '3px',
                             height: '9.5%',
                             width: "80%",
                             margin: "2% auto",
@@ -95,6 +105,8 @@ const MapWrapped = ({ centerCoordinates }) => {
                         <AlertIcon />
 
                         {trueResponse.message}
+
+                        <a href={trueResponse.url} target="blank">Open</a>
 
                         <CloseButton
                             alignSelf='flex-start'
