@@ -121,7 +121,7 @@ const DetailArea = () => {
                     </Flex>
 
                     <Flex>
-                        <Button
+                        {/* <Button
                             variant="solid"
                             bgColor="#0D72CC"
                             color="white"
@@ -130,14 +130,14 @@ const DetailArea = () => {
                             _active={{ bgColor: "#0D72CC" }}
                         >
                             Buka Lokasi Kecamatan
-                        </Button>
+                        </Button> */}
 
                         <Button
                             variant="solid"
                             bgColor="#0D72CC"
                             color="white"
-                            width="50%"
-                            ml="2%"
+                            width="100%"
+                            ml="0"
                             _hover={{ bgColor: "#0D72CC" }}
                             _active={{ bgColor: "#0D72CC" }}
                         >
