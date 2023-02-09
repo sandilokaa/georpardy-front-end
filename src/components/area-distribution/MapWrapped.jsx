@@ -5,11 +5,22 @@ import {
     TileLayer,
     Polygon
 } from "react-leaflet";
+import {
+    Alert,
+    AlertIcon,
+    CloseButton,
+    useDisclosure
+} from '@chakra-ui/react'
 import "leaflet/dist/leaflet.css";
 import { statesData } from "../../data/geo";
 import axios from "axios";
 
 const MapWrapped = ({ centerCoordinates }) => {
+
+    const [trueResponse, setTrueResponse] = useState({
+        isTrue: false,
+        message: ""
+    });
 
     const params = useLocation();
 
@@ -46,7 +57,16 @@ const MapWrapped = ({ centerCoordinates }) => {
 
     }, [districtId]);
 
-    
+    function onMapClick(e) {
+
+        setTrueResponse({
+            isTrue: true,
+            message: "You clicked the map at " + e.latlng
+        });
+
+    };
+
+
     return (
 
         <MapContainer
@@ -58,6 +78,37 @@ const MapWrapped = ({ centerCoordinates }) => {
                 borderRadius: "20px"
             }}
         >
+            {
+                trueResponse.isTrue && (
+                    <Alert
+                        status='info'
+                        style={{
+                            height: '9.5%',
+                            width: "80%",
+                            margin: "2% auto",
+                            fontSize: "14px",
+                            fontWeight: "700",
+                            zIndex: "1000",
+                            cursor: "pointer"
+                        }}
+                    >
+                        <AlertIcon />
+
+                        {trueResponse.message}
+
+                        <CloseButton
+                            alignSelf='flex-start'
+                            position='relative'
+                            right={-2}
+                            top={0}
+                            margin='auto 0'
+                            onClick={() => setTrueResponse(false)}
+                        />
+                        
+                    </Alert>
+                )
+            }
+
             <TileLayer
                 url="https://api.maptiler.com/maps/topo-v2/256/{z}/{x}/{y}.png?key=aA11V8lEYGnQr9zR8OgO"
                 attribution='<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
@@ -65,19 +116,19 @@ const MapWrapped = ({ centerCoordinates }) => {
             {
                 statesData.features.map((state) => {
 
-                    if(state.id === districtId) {
+                    if (state.id === districtId) {
 
                         const coordinates = state.geometry.coordinates[0].map((item) => [item[1], item[0]]);
 
-                        const handleColor = state.properties.riskLevel === "Tidak Rawan" ? 
-                                            "#82CD47" : 
-                                            state.properties.riskLevel === "Kerawanan Rendah" ? 
-                                            "#FFD56F" :
-                                            state.properties.riskLevel === "Kerawanan Sedang" ?
-                                            "#FFB26B" :
-                                            state.properties.riskLevel === "Kerawanan Tinggi" ?
-                                            "#FF7B54" :
-                                            state.properties.riskLevel === "Sangat Rawan" ?
+                        const handleColor = state.properties.riskLevel === "Tidak Rawan" ?
+                            "#82CD47" :
+                            state.properties.riskLevel === "Kerawanan Rendah" ?
+                                "#FFD56F" :
+                                state.properties.riskLevel === "Kerawanan Sedang" ?
+                                    "#FFB26B" :
+                                    state.properties.riskLevel === "Kerawanan Tinggi" ?
+                                        "#FF7B54" :
+                                        state.properties.riskLevel === "Sangat Rawan" ?
                                             "#D9534F" :
                                             "#82CD47";
 
@@ -116,7 +167,7 @@ const MapWrapped = ({ centerCoordinates }) => {
                                         });
                                     },
                                     click: (e) => {
-
+                                        onMapClick(e)
                                     }
                                 }}
                             />
