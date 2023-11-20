@@ -19,9 +19,9 @@ import { Pagination } from "swiper";
 import HomeLayout from "../../layouts/HomeLayout";
 import ImageMainContent from "../../assets/images/img-content-1.png";
 import GeopardyInformationCard from "../../components/home/GeopardyInformationCard";
-import ImageLandslide from "../../assets/images/tanah-longsor.jpg";
-import ImageLandslide2 from "../../assets/images/tanah-longsor-2.png";
-import ImageLandslide3 from "../../assets/images/tanah-longsor-3.png";
+import rainPicture from "../../assets/images/rain-1.png";
+import rainPicture2 from "../../assets/images/rain-2.png";
+import rainPicture3 from "../../assets/images/rain-3.png";
 import AlertIcon from "../../assets/icons/alert.png";
 import OpenIcon from "../../assets/icons/open.png";
 import MailboxIcon from "../../assets/icons/mailbox.png";
@@ -41,6 +41,7 @@ const Home = () => {
         <HomeLayout>
 
             <Flex
+                id="home"
                 gap="40px"
                 mt="40px"
                 justifyContent="space-between"
@@ -52,9 +53,9 @@ const Home = () => {
                             <Heading fontSize="48px" fontWeight="black" fontFamily="Poppins" color="#323232">
                                 Temukan
                                 <Heading as="span" color="#0D72CC" fontSize="48px" fontWeight="black" ml="14px" mr="14px">
-                                    lokasi yang cocok
+                                    informasi curah hujan
                                 </Heading>
-                                untuk bangun rumah tinggal
+                                di wilayah Australia
                             </Heading>
                         </Box>
                     </Flex>
@@ -66,8 +67,7 @@ const Home = () => {
                         mt="10px"
                         fontFamily="Poppins"
                     >
-                        Memberikan pelayanan informasi mengenai  daerah
-                        rawan tanah longsor di Kota Semarang.
+                        Memberikan pelayanan informasi mengenai  curah hujan di wilayah Australia.
                     </Text>
                     <Link
                         as={LinkRouter}
@@ -91,6 +91,7 @@ const Home = () => {
             </Flex>
 
             <Flex
+                id="behind-project"
                 gap="40px"
                 mt="100px"
                 justifyContent="space-between"
@@ -122,16 +123,18 @@ const Home = () => {
                     width="68%"
                     textAlign="justify"
                 >
-                    Geopardy dibuat karena topografi Kota Semarang yang unik. Secara geografis,
-                    wilayah Kota Semarang terletak diantara 6◦50'-7◦10' LS dan 109◦35'110◦50' BT.
-                    Jika dilihat dari karakteristik wilayah Kota Semarang yang memiliki topografi berbukit,
-                    maka perlu adanya pemetaan risiko longsor yang bertujuan untuk memberikan informasi mengenai
-                    lokasi-lokasi yang memiliki risiko tanah longsor terhadap pembangunan rumah.
+                    Curah hujan di Australia sangat bervariasi sesuai dengan wilayahnya. 
+                    Bagian utara, seperti Queensland, memiliki musim hujan yang signifikan, 
+                    sementara gurun di bagian tengah cenderung sangat kering. 
+                    Di wilayah selatan, terutama di pesisir seperti New South Wales dan Victoria, 
+                    hujan lebih merata sepanjang tahun. Variabilitas ini memengaruhi aspek sehari-hari, 
+                    pertanian, dan lingkungan di seluruh negara.
                 </Text>
 
             </Flex>
 
             <Flex
+                id="why-us"
                 gap="60px"
                 mt="100px"
                 mb="160px"
@@ -174,19 +177,19 @@ const Home = () => {
                         bgColor="#EBD151"
                         icon={OpenIcon}
                         title="Untuk Publik"
-                        paragraph="Geopardy menyediakan informasi yang dapat digunakan oleh semua orang yang membutuhkannya."
+                        paragraph="Geopardy menyediakan informasi yang dapat digunakan oleh semua orang."
                     />
                     <GeopardyInformationCard
                         bgColor="#E03F3D"
                         icon={RadioactiveIcon}
                         title="Pengingat Bahaya"
-                        paragraph="Geopardy memberikan informasi bahaya tentang daerah rawan longsor."
+                        paragraph="Geopardy memberikan informasi mengenai prediksi curah hujan."
                     />
                     <GeopardyInformationCard
                         bgColor="#74D149"
                         icon={MailboxIcon}
-                        title="Area Semarang"
-                        paragraph="Geopardy memberikan informasi daerah rawan longsor khusus Kota Semarang."
+                        title="Area Australia"
+                        paragraph="Geopardy memberikan informasi daerah dengan prediksi curah hujan."
                     />
                 </Flex>
             </Flex>
@@ -203,28 +206,28 @@ const Home = () => {
                         >
                             <SwiperSlide className="swiper-slide">
                                 <AreaInformationSwiper
-                                    imageLandslide={ImageLandslide}
+                                    rainPicture={rainPicture}
                                 />
                             </SwiperSlide>
                             <SwiperSlide className="swiper-slide">
                                 <AreaInformationSwiper
-                                    imageLandslide={ImageLandslide2}
+                                    rainPicture={rainPicture2}
                                 />
                             </SwiperSlide>
                             <SwiperSlide className="swiper-slide">
                                 <AreaInformationSwiper
-                                    imageLandslide={ImageLandslide3}
+                                    rainPicture={rainPicture3}
                                 />
                             </SwiperSlide>
                         </Swiper>
                     </Flex>
                 </Flex>
-                <Flex w="50%" flexDirection="column" mt="1%">
+                <Flex w="50%" flexDirection="column">
                     <Box>
                         <Heading fontSize="48px" fontWeight="black" fontFamily="Poppins" color="#323232">
-                            Sebaran daerah rawan
+                            Sebaran daerah prediksi
                             <Heading as="span" color="#0D72CC" fontSize="48px" fontWeight="black" ml="14px" mr="14px">
-                                tanah longsor
+                                curah hujan
                             </Heading>
                         </Heading>
                         <Text
@@ -235,7 +238,7 @@ const Home = () => {
                             mt="20px"
                             fontFamily="Poppins"
                         >
-                            Informasi akurat sebaran daerah rawan tanah longsor di Kota Semarang
+                            Informasi akurat sebaran daerah curah hujan di Australia
                         </Text>
                         <Text
                             fontSize="20px"
@@ -245,8 +248,8 @@ const Home = () => {
                             mt="20px"
                             fontFamily="Poppins"
                         >
-                            Topografi Kota Semarang yang memiliki dataran rendah dan dataran tinggi maka perlu
-                            adanya sistem informasi untuk melihat daerah rawan tanah longsor.
+                            Kondisi hujan di Australia sangat bervariasi karena mencakup berbagai iklim dan wilayah geografis. 
+                            Variabilitas ini memengaruhi aspek sehari-hari, pertanian, dan lingkungan di seluruh negara.
                         </Text>
                         <Link
                             as={LinkRouter}
@@ -289,7 +292,7 @@ const Home = () => {
                         fontFamily="Poppins"
                         textAlign="center"
                     >
-                        Ayo berbicara dengan Geopardy untuk mencari informasi lebih jelas mengenai daerah rawan longsor di Kota Semarang.
+                        Ayo berbicara dengan Geopardy untuk mencari informasi lebih jelas mengenai prediksi curah hujan di wilayah Australia.
                     </Text>
 
                     <Flex flexDirection="row" gap="20px" mt="10px">

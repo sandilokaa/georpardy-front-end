@@ -5,10 +5,10 @@ import {
 } from "@chakra-ui/react";
 import "../../assets/css/swiper.css";
 
-const AreaInformationSwiper = ({ imageLandslide }) => {
+const AreaInformationSwiper = ({ rainPicture }) => {
     return (
         <Flex flexDirection="column" gap="20px">
-            <Image display="block" backgroundSize="cover" className="swiper-image" src={imageLandslide} alt="Geopardy Tanah Longsor" />
+            <Image display="block" backgroundSize="cover" className="swiper-image" src={rainPicture} alt="Geopardy Tanah Longsor" />
         </Flex>
     );
 };

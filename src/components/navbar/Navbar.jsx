@@ -12,6 +12,22 @@ import Logo from "../../assets/images/Logo.png"
 
 const Navbar = () => {
 
+    const handleScroll = (e, targetId, offset) => {
+        e.preventDefault();
+    
+        const targetElement = document.getElementById(targetId);
+    
+        if (targetElement) {
+
+            const offsetTop = targetElement.getBoundingClientRect().top + window.scrollY + offset;
+
+            window.scrollTo({
+                top: offsetTop,
+                behavior: "smooth",
+            });
+        }
+    };
+
     return (
 
         <Flex
@@ -82,6 +98,7 @@ const Navbar = () => {
                     <Link
                         as={LinkRouter}
                         to="/behind-project"
+                        onClick={(e) => handleScroll(e, "behind-project", -200)}
                         _hover={{
                             textDecoration: "none",
                             color: "#000",

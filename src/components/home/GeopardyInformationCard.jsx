@@ -24,6 +24,7 @@ const GeopardyInformationCard = ({ icon, title, bgColor, paragraph }) => {
                 alignItems="center"
                 textAlign="center"
                 mt="25px"
+                padding="2%"
             >
                 <Flex
                     borderRadius="full"
