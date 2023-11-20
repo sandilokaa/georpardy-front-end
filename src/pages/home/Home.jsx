@@ -272,6 +272,7 @@ const Home = () => {
             </Flex>
 
             <Flex
+                id="contact-us"
                 mt="40px"
                 mb="60px"
                 alignItems="center"

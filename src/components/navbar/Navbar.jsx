@@ -116,6 +116,7 @@ const Navbar = () => {
                     <Link
                         as={LinkRouter}
                         to="/contact-us"
+                        onClick={(e) => handleScroll(e, "contact-us", -200)}
                         _hover={{
                             textDecoration: "none",
                             color: "#000",
