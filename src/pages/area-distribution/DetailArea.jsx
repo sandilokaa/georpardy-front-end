@@ -128,7 +128,12 @@ const DetailArea = () => {
                             bgColor="#0D72CC"
                             color="white"
                             width="49%"
-                            onClick={() => window.history.back()}
+                            onClick={() => { 
+                                window.history.back();
+                                setTimeout(() => {
+                                    window.location.reload();
+                                }, 100)
+                            }}
                             _hover={{ bgColor: "#0D72CC" }}
                             _active={{ bgColor: "#0D72CC" }}
                         >
