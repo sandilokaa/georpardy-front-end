@@ -2,7 +2,7 @@ import React from "react";
 import { Flex, Heading, Image } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
-const AreaDistributionCard = ({ districtName, title, districtPicture, districtId  }) => {
+const AreaDistributionCard = ({ cityName, title, cityPicture, cityId  }) => {
 
     const navigate = useNavigate();
 
@@ -19,7 +19,7 @@ const AreaDistributionCard = ({ districtName, title, districtPicture, districtId
             zIndex="100"
             transition="0.4s all ease-in-out"
             _hover={{ boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)", cursor: "pointer"}}
-            onClick={() => navigate(`/area-distribution/detail/${districtId}`)}
+            onClick={() => navigate(`/area-distribution/detail/${cityId}`)}
         >
             <Flex
                 flexDirection="column"
@@ -38,10 +38,10 @@ const AreaDistributionCard = ({ districtName, title, districtPicture, districtId
                     justifyContent="center"
                     alignItems="center"
                 >
-                    <Image borderRadius="10px" maxW="240px" src={districtPicture} alt={title} />
+                    <Image borderRadius="10px" maxW="240px" src={cityPicture} alt={title} />
                 </Flex>
                 <Heading fontSize="20px" mb="10px" fontWeight="medium" fontFamily="Poppins" color="#323232">
-                    {districtName}
+                    {cityName}
                 </Heading>
             </Flex>
         </Flex>

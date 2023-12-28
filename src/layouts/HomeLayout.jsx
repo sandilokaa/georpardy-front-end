@@ -12,7 +12,7 @@ const HomeLayout = ({ children }) => {
             <Container maxW="1200px" pt="65px" centerContent>
                 {children}
             </Container>
-            <Box display="block">
+            <Box display="block" position="absolute" bottom="0" left="0" right="0">
                 <Footer />
             </Box>
         </Box>

@@ -8,8 +8,7 @@ import {
 import {
     Alert,
     AlertIcon,
-    CloseButton,
-    useDisclosure
+    CloseButton
 } from '@chakra-ui/react'
 import "leaflet/dist/leaflet.css";
 import { statesData } from "../../data/geo";
@@ -23,11 +22,11 @@ const MapWrapped = ({ centerCoordinates }) => {
         url: ""
     });
 
+    const [cityData, setCityData] = useState();
+
     const params = useLocation();
 
-    const districtId = (params.pathname).split('/')[3];
-
-    const [districtData, setDistrictData] = useState();
+    const cityId = (params.pathname).split('/')[3];
 
     useEffect(() => {
 
@@ -35,8 +34,8 @@ const MapWrapped = ({ centerCoordinates }) => {
 
             try {
 
-                const getDistrictDataRequest = await axios.get(
-                    `http://localhost:8080/v1/sub-district/results/${districtId}`,
+                const getCityDataRequest = await axios.get(
+                    `http://localhost:8080/api/v1/city/${cityId}`,
                     {
                         headers: {
                             "Access-Control-Allow-Origin": "*"
@@ -44,9 +43,9 @@ const MapWrapped = ({ centerCoordinates }) => {
                     }
                 );
 
-                const getDistrictDataResponse = getDistrictDataRequest.data;
+                const getCityDataResponse = getCityDataRequest.data;
 
-                setDistrictData(getDistrictDataResponse.data.subDistrictData);
+                setCityData(getCityDataResponse.data.getedCityByCityId);
 
             } catch (err) {
                 alert(err.message);
@@ -56,14 +55,14 @@ const MapWrapped = ({ centerCoordinates }) => {
 
         onSearch();
 
-    }, [districtId]);
+    }, [cityId]);
 
     function onMapClick(e) {
 
         let coordinatesLatLng = e.latlng;
 
-        console.log(coordinatesLatLng.lat);
-        console.log(coordinatesLatLng.lng);
+        // console.log(coordinatesLatLng.lat);
+        // console.log(coordinatesLatLng.lng);
 
         setTrueResponse({
             isTrue: true,
@@ -80,7 +79,7 @@ const MapWrapped = ({ centerCoordinates }) => {
 
         <MapContainer
             center={centerCoordinates}
-            zoom={12}
+            zoom={10}
             style={{
                 width: "100%",
                 height: "630px",
@@ -116,7 +115,7 @@ const MapWrapped = ({ centerCoordinates }) => {
                             margin='auto 0'
                             onClick={() => setTrueResponse(false)}
                         />
-                        
+
                     </Alert>
                 )
             }
@@ -128,25 +127,21 @@ const MapWrapped = ({ centerCoordinates }) => {
             {
                 statesData.features.map((state) => {
 
-                    if (state.id === districtId) {
+                    if (state.id === cityId) {
 
                         const coordinates = state.geometry.coordinates[0].map((item) => [item[1], item[0]]);
 
-                        const handleColor = state.properties.riskLevel === "Tidak Rawan" ?
+                        const handleColor = state.properties.riskLevel === "Rendah" ?
                             "#82CD47" :
-                            state.properties.riskLevel === "Kerawanan Rendah" ?
-                                "#FFD56F" :
-                                state.properties.riskLevel === "Kerawanan Sedang" ?
-                                    "#FFB26B" :
-                                    state.properties.riskLevel === "Kerawanan Tinggi" ?
-                                        "#FF7B54" :
-                                        state.properties.riskLevel === "Sangat Rawan" ?
-                                            "#D9534F" :
-                                            "#82CD47";
+                            state.properties.riskLevel === "Menengah" ?
+                                "#FFB26B" :
+                                state.properties.riskLevel === "Tinggi" ?
+                                    "#D9534F" :
+                                    "#82CD47";
 
                         return (
                             <Polygon
-                                key={districtId}
+                                key={cityId}
                                 pathOptions={{
                                     fillColor: `${handleColor}`,
                                     fillOpacity: 0.7,

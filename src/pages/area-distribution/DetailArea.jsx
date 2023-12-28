@@ -13,11 +13,12 @@ import MapWrapped from "../../components/area-distribution/MapWrapped";
 
 const DetailArea = () => {
 
-    const [districtData, setDistrictData] = useState();
+    const [cityData, setCityData] = useState();
+    const [loading, setLoading] = useState(true);
 
     const params = useLocation();
 
-    const districtId = (params.pathname).split('/')[3];
+    const cityId = (params.pathname).split('/')[3];
 
     useEffect(() => {
 
@@ -25,8 +26,8 @@ const DetailArea = () => {
 
             try {
 
-                const getDistrictDataRequest = await axios.get(
-                    `http://localhost:8080/v1/sub-district/results/${districtId}`,
+                const getCityDataRequest = await axios.get(
+                    `http://localhost:8080/api/v1/city/${cityId}`,
                     {
                         headers: {
                             "Access-Control-Allow-Origin": "*"
@@ -34,9 +35,10 @@ const DetailArea = () => {
                     }
                 );
 
-                const getDistrictDataResponse = getDistrictDataRequest.data;
+                const getCityDataResponse = getCityDataRequest.data;
 
-                setDistrictData(getDistrictDataResponse.data.subDistrictData);
+                setCityData(getCityDataResponse.data.getedCityByCityId);
+                setLoading(false);
 
             } catch (err) {
                 alert(err.message);
@@ -46,7 +48,7 @@ const DetailArea = () => {
 
         onSearch();
 
-    }, [districtId]);
+    }, [cityId]);
 
     return (
 
@@ -54,14 +56,14 @@ const DetailArea = () => {
             <Flex
                 gap="40px"
                 mt="40px"
-                mb="20px"
+                mb="8%"
                 justifyContent="space-between"
                 alignItems="center"
             >
                 <Flex flexDirection="column" w={["100%", "51%"]} gap="20px" justifyContent="flex-start">
                     <Flex w="full" flexDirection="column" mt="40px">
                         <Box>
-                            <Heading fontSize="20px" fontWeight="bold" fontFamily="Poppins" color="#323232">Nama Kecamatan</Heading>
+                            <Heading fontSize="20px" fontWeight="bold" fontFamily="Poppins" color="#323232">Nama Kota</Heading>
                             <Text
                                 fontSize="20px"
                                 fontWeight="regular"
@@ -70,7 +72,7 @@ const DetailArea = () => {
                                 mb="20px"
                                 fontFamily="Poppins"
                             >
-                                {districtData ? districtData.districtName : null}
+                                {cityData ? cityData.City.cityName : null}
                             </Text>
                             <Heading fontSize="20px" fontWeight="bold" fontFamily="Poppins" color="#323232">Lintang Selatan</Heading>
                             <Text
@@ -81,7 +83,7 @@ const DetailArea = () => {
                                 mb="20px"
                                 fontFamily="Poppins"
                             >
-                                {districtData ? districtData.latitude : null}
+                                {cityData ? cityData.latitude : null}
                             </Text>
                             <Heading fontSize="20px" fontWeight="bold" fontFamily="Poppins" color="#323232">Bujur Timur</Heading>
                             <Text
@@ -92,9 +94,9 @@ const DetailArea = () => {
                                 mb="20px"
                                 fontFamily="Poppins"
                             >
-                                {districtData ? districtData.longitude : null}
+                                {cityData ? cityData.longitude : null}
                             </Text>
-                            <Heading fontSize="20px" fontWeight="bold" fontFamily="Poppins" color="#323232">Tingkat Kerawanan</Heading>
+                            <Heading fontSize="20px" fontWeight="bold" fontFamily="Poppins" color="#323232">Tingkat Curah Hujan</Heading>
                             <Text
                                 fontSize="20px"
                                 fontWeight="regular"
@@ -103,7 +105,7 @@ const DetailArea = () => {
                                 mb="20px"
                                 fontFamily="Poppins"
                             >
-                                {districtData ? districtData.riskLevel : null}
+                                {cityData ? cityData.RiskLevel.riskLevel : null}
                             </Text>
                             <Heading fontSize="20px" fontWeight="bold" fontFamily="Poppins" color="#323232">Deskripsi</Heading>
                             <Text
@@ -115,29 +117,30 @@ const DetailArea = () => {
                                 fontFamily="Poppins"
                                 textAlign="justify"
                             >
-                                {districtData ? districtData.description : null}
+                                {cityData ? cityData.description : null}
                             </Text>
                         </Box>
                     </Flex>
 
                     <Flex>
-                        {/* <Button
+                        <Button
                             variant="solid"
                             bgColor="#0D72CC"
                             color="white"
-                            width="50%"
+                            width="49%"
+                            onClick={() => window.history.back()}
                             _hover={{ bgColor: "#0D72CC" }}
                             _active={{ bgColor: "#0D72CC" }}
                         >
-                            Buka Lokasi Kecamatan
-                        </Button> */}
+                            Kembali
+                        </Button>
 
                         <Button
                             variant="solid"
                             bgColor="#0D72CC"
                             color="white"
-                            width="100%"
-                            ml="0"
+                            width="49%"
+                            ml="2%"
                             _hover={{ bgColor: "#0D72CC" }}
                             _active={{ bgColor: "#0D72CC" }}
                         >
@@ -155,10 +158,19 @@ const DetailArea = () => {
                     zIndex="1"
                     w={["100%", "49%"]}
                 >
-                    <Box w={["100%", "560px"]} maxH="620px">
-                        <MapWrapped
-                            centerCoordinates={[-6.966667, 110.416664]}
-                        />
+                    <Box w={["100%", "560px"]} maxH="630px">
+                        {loading ? (
+                            <p>Loading...</p>
+                        ): (
+                            <MapWrapped
+                                centerCoordinates = {
+                                    [
+                                        cityData ? cityData.latitude : 0,
+                                        cityData ? cityData.longitude : 0
+                                    ]
+                                }
+                            />
+                        )}
                     </Box>
                 </Flex>
 

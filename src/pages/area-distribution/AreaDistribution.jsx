@@ -1,64 +1,40 @@
-import React, { useState, useEffect, useRef } from "react";
-// import { NavLink as LinkRouter } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchData } from "../../redux/slices/searchSlice";
 import {
     Box,
     Flex,
     Heading,
     Image,
-    Button,
     Input,
     Grid,
-    GridItem
+    GridItem,
+    Button
 } from "@chakra-ui/react";
 import HomeLayout from "../../layouts/HomeLayout";
 import SearchIcon from "../../assets/icons/search.png";
 import AreaDistributionCard from "../../components/area-distribution/AreaDistributionCard";
-import axios from "axios";
 
 
 const AreaDistribution = () => {
 
-    const [districtData, setDistrictData] = useState();
+    const dispatch = useDispatch();
+    const [searchQuery, setSearchQuery] = useState('');
 
-    const districtField = useRef();
-
-
-    const onSearch = async () => {
-
-        const getDistrictName = districtField.current.value;
-
-        try {
-
-            const getDistrictDataRequest = await axios.get(
-                `http://localhost:8080/v1/sub-district/results?districtName=${getDistrictName}`,
-                {
-                    headers: {
-                        "Access-Control-Allow-Origin": "*"
-                    }
-                }
-            );
-
-            const getDistrictDataResponse = getDistrictDataRequest.data;
-
-            setDistrictData(getDistrictDataResponse.data.subDistrictData);
-
-        } catch (err) {
-            alert(err.message);
-        }
-
-    };
+    const data = useSelector((state) => state.search.data.getedAllCity);
+    const status = useSelector((state) => state.search.status);
 
     useEffect(() => {
-        onSearch();
-    }, [districtField]);
+        if (status === 'idle') {
+            dispatch(fetchData(searchQuery));
+        }
+    }, [searchQuery, status, dispatch]);
 
-
-    const onReset = () => {
-        districtField.current.value = ""
-
-        onSearch();
+    const handleSearchChange = (e) => {
+        const query = e.target.value;
+        setSearchQuery(query);
+        dispatch(fetchData(query));
     };
-
 
     return (
 
@@ -73,7 +49,7 @@ const AreaDistribution = () => {
             >
                 <Flex position="relative" flexDirection="column" alignItems="center" background="linear-gradient(180deg, #0D72CC 0%, #0FF9E7 157.97%)" padding="4% 24% 8%" borderRadius="20px">
                     <Heading fontSize="48px" fontWeight="bold" fontFamily="Poppins" color="#FFFFFF" w={["150%"]} textAlign="center">
-                        Kecamatan di Kota Semarang
+                        Nama Kota di Australia
                     </Heading>
                     <Flex
                         borderRadius="10px"
@@ -81,7 +57,7 @@ const AreaDistribution = () => {
                         justifyContent="center"
                         alignItems="center"
                         boxShadow="0px 2px 4px 2px rgba(15, 249, 231, 0.25), inset 0px 2px 4px rgba(0, 0, 0, 0.25);"
-                        w={["100%", "650px"]}
+                        w={["100%", "550px"]}
                         h="80px"
                         mt="110px"
                         background="#FFFFFF"
@@ -91,56 +67,35 @@ const AreaDistribution = () => {
                             <Image display="block" maxW="30px" src={SearchIcon} alt="Geopardy Search" />
                         </Box>
                         <Input
-                            placeholder="Cari untuk temukan kecamatan"
+                            placeholder="Cari untuk temukan nama kota"
                             color="#323232"
                             variant="unstyled"
                             w="100%"
                             fontSize="20px"
                             fontWeight="regular"
                             ml="50px"
-                            ref={districtField}
+                            value={searchQuery}
+                            onChange={handleSearchChange}
                         />
-                        <Button
-                            variant="solid"
-                            bgColor="#0D72CC"
-                            color="white"
-                            padding="0 6%"
-                            mr="2%"
-                            _hover={{ bgColor: "#0D72CC" }}
-                            onClick={onSearch}
-                        >
-                            Cari
-                        </Button>
-                        <Button
-                            variant="solid"
-                            bgColor="#EB455F"
-                            color="white"
-                            padding="0 6%"
-                            mr="2%"
-                            _hover={{ bgColor: "#EB455F" }}
-                            onClick={onReset}
-                        >
-                            Reset
-                        </Button>
                     </Flex>
                 </Flex>
             </Flex>
 
             <Flex position="relative">
                 <Grid w="100%" templateColumns="repeat(4, 1fr)" gap={12}>
-                    {districtData != null ?
-                        districtData.map((item) => {
+                    {data &&
+                        data.map((item) => {
                             return (
                                 <GridItem key={item.id}>
                                     <AreaDistributionCard
-                                        districtId={item.id}
-                                        districtPicture={item.picture}
-                                        title={item.districtName}
-                                        districtName={item.districtName}
+                                        cityId={item.id}
+                                        cityPicture={item.picture}
+                                        title={item.cityName}
+                                        cityName={item.cityName}
                                     />
                                 </GridItem>
                             )
-                        }) : null
+                        })
                     }
                 </Grid>
             </Flex>
