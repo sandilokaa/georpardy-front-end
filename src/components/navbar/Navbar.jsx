@@ -97,7 +97,7 @@ const Navbar = () => {
                     </Link>
                     <Link
                         as={LinkRouter}
-                        to="/behind-project"
+                        to="/"
                         onClick={(e) => handleScroll(e, "behind-project", -200)}
                         _hover={{
                             textDecoration: "none",
@@ -115,7 +115,7 @@ const Navbar = () => {
                     </Link>
                     <Link
                         as={LinkRouter}
-                        to="/contact-us"
+                        to="/"
                         onClick={(e) => handleScroll(e, "contact-us", -200)}
                         _hover={{
                             textDecoration: "none",
@@ -135,7 +135,7 @@ const Navbar = () => {
                 <Flex>
                     <Link
                         as={LinkRouter}
-                        to="/login"
+                        to="/data-test"
                         textDecoration="none"
                         _hover={{ textDecoration: "none" }}
                     >
@@ -146,7 +146,7 @@ const Navbar = () => {
                             _hover={{ bgColor: "#0D72CC" }}
                             _active={{ bgColor: "#0D72CC" }}
                         >
-                            Login Admin
+                            Data Test
                         </Button>
                     </Link>
                 </Flex>

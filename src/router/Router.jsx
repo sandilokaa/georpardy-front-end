@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "../pages/home/Home";
 import AreaDistribution from "../pages/area-distribution/AreaDistribution";
 import DetailArea from "../pages/area-distribution/DetailArea";
+import DataTest from "../pages/data-test/DataTest";
 
 const Router = () => {
     return (
@@ -13,6 +14,7 @@ const Router = () => {
             <Route path="/area-distribution/detail" element={<DetailArea />}>
                 <Route path=":cityId" element={<DetailArea />}></Route>
             </Route>
+            <Route path="/data-test" element={<DataTest />}></Route>
 
         </Routes>
     );
