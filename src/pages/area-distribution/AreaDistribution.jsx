@@ -8,8 +8,7 @@ import {
     Image,
     Input,
     Grid,
-    GridItem,
-    Button
+    GridItem
 } from "@chakra-ui/react";
 import HomeLayout from "../../layouts/HomeLayout";
 import SearchIcon from "../../assets/icons/search.png";
@@ -81,8 +80,8 @@ const AreaDistribution = () => {
                 </Flex>
             </Flex>
 
-            <Flex position="relative">
-                <Grid w="100%" templateColumns="repeat(4, 1fr)" gap={12}>
+            <Flex position="relative" mb="8%">
+                <Grid w="100%" templateColumns="repeat(4, 1fr)" gap={14}>
                     {data &&
                         data.map((item) => {
                             return (

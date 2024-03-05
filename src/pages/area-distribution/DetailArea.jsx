@@ -61,7 +61,7 @@ const DetailArea = () => {
                 alignItems="center"
             >
                 <Flex flexDirection="column" w={["100%", "51%"]} gap="20px" justifyContent="flex-start">
-                    <Flex w="full" flexDirection="column" mt="40px">
+                    <Flex w="full" flexDirection="column" mt="10px">
                         <Box>
                             <Heading fontSize="20px" fontWeight="bold" fontFamily="Poppins" color="#323232">Nama Kota</Heading>
                             <Text

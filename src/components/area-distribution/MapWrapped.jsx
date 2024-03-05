@@ -61,9 +61,6 @@ const MapWrapped = ({ centerCoordinates }) => {
 
         let coordinatesLatLng = e.latlng;
 
-        // console.log(coordinatesLatLng.lat);
-        // console.log(coordinatesLatLng.lng);
-
         setTrueResponse({
             isTrue: true,
             message: `You clicked the map at ` + e.latlng,
@@ -129,7 +126,7 @@ const MapWrapped = ({ centerCoordinates }) => {
 
                     if (state.id === cityId) {
 
-                        const coordinates = state.geometry.coordinates[0].map((item) => [item[1], item[0]]);
+                        const coordinates = state.geometry.coordinates[0].map((item) => [item[0], item[1]]);
 
                         const handleColor = state.properties.riskLevel === "Rendah" ?
                             "#82CD47" :
