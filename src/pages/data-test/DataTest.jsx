@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
     Box,
     Flex,
@@ -6,17 +6,12 @@ import {
     Text,
     Image,
     Button,
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalFooter,
-    ModalBody,
-    useDisclosure,
-    Input
+    useDisclosure
 } from "@chakra-ui/react";
 import HomeLayout from "../../layouts/HomeLayout";
 import DataTestImage from "../../assets/images/data-test-image.png";
+import ModalDataTestExample from "../../components/data-test/ModalExample";
+// import ModalDataTestStarted from "../../components/data-test/ModalStarted";
 
 const DataTest = () => {
 
@@ -138,148 +133,50 @@ const DataTest = () => {
                     Get Started
                 </Button>
 
-                <Modal isOpen={isOpen} onClose={onClose} size="4xl">
-                    <ModalOverlay />
-                    <ModalContent>
-                        <ModalHeader
-                            style={{
-                                textAlign: "center",
-                                fontFamily: "Poppins",
-                                fontWeight: "bold",
-                                fontSize: "24px"
-                            }}
-                        >
-                            Form Rainfall Prediction Example
-                        </ModalHeader>
-                        <ModalBody>
-                            <Flex
-                                gap="20px"
-                                justifyContent="center"
-                                mt="20px"
-                                color="#323232"
-                                fontFamily="Poppins"
-                                fontWeight="medium"
-                            >
-                                <div>
-                                    <p style={{ marginBottom: "6px" }}>MinTemp</p>
-                                    <Input placeholder='20.9' readOnly />
-                                </div>
-                                <div>
-                                    <p style={{ marginBottom: "6px" }}>MaxTemp</p>
-                                    <Input placeholder='37.2' readOnly />
-                                </div>
-                                <div>
-                                    <p style={{ marginBottom: "6px" }}>Rainfall</p>
-                                    <Input placeholder='0.8' readOnly />
-                                </div>
-                                <div>
-                                    <p style={{ marginBottom: "6px" }}>Evaporation</p>
-                                    <Input placeholder='6.0' readOnly />
-                                </div>
-                            </Flex>
-                            <Flex
-                                gap="20px"
-                                justifyContent="center"
-                                mt="20px"
-                                color="#323232"
-                                fontFamily="Poppins"
-                                fontWeight="medium"
-                            >
-                                <div>
-                                    <p style={{ marginBottom: "6px" }}>Sunshine</p>
-                                    <Input placeholder='5.0' readOnly />
-                                </div>
-                                <div>
-                                    <p style={{ marginBottom: "6px" }}>WindGustSpeed</p>
-                                    <Input placeholder='34.1' readOnly />
-                                </div>
-                                <div>
-                                    <p style={{ marginBottom: "6px" }}>WindSpeed9am</p>
-                                    <Input placeholder='20.2' readOnly />
-                                </div>
-                                <div>
-                                    <p style={{ marginBottom: "6px" }}>WindSpeed3pm</p>
-                                    <Input placeholder='49.5' readOnly />
-                                </div>
-                            </Flex>
-                            <Flex
-                                gap="20px"
-                                justifyContent="center"
-                                mt="20px"
-                                color="#323232"
-                                fontFamily="Poppins"
-                                fontWeight="medium"
-                            >
-                                <div>
-                                    <p style={{ marginBottom: "6px" }}>Humidity9am</p>
-                                    <Input placeholder='90.2' readOnly />
-                                </div>
-                                <div>
-                                    <p style={{ marginBottom: "6px" }}>Humidity3pm</p>
-                                    <Input placeholder='20' readOnly />
-                                </div>
-                                <div>
-                                    <p style={{ marginBottom: "6px" }}>Pressure9am</p>
-                                    <Input placeholder='1200.2' readOnly />
-                                </div>
-                                <div>
-                                    <p style={{ marginBottom: "6px" }}>Pressure3pm</p>
-                                    <Input placeholder='1130.4' readOnly />
-                                </div>
-                            </Flex>
-                            <Flex
-                                gap="20px"
-                                justifyContent="center"
-                                mt="20px"
-                                color="#323232"
-                                fontFamily="Poppins"
-                                fontWeight="medium"
-                            >
-                                <div>
-                                    <p style={{ marginBottom: "6px" }}>Cloud9am</p>
-                                    <Input placeholder='12.5' readOnly />
-                                </div>
-                                <div>
-                                    <p style={{ marginBottom: "6px" }}>Cloud3pm</p>
-                                    <Input placeholder='8.2' readOnly />
-                                </div>
-                                <div>
-                                    <p style={{ marginBottom: "6px" }}>Temp3pm</p>
-                                    <Input placeholder='18.4' readOnly />
-                                </div>
-                                <div>
-                                    <p style={{ marginBottom: "6px" }}>RainToday</p>
-                                    <Input placeholder='1' readOnly />
-                                </div>
-                            </Flex>
+                <ModalDataTestExample
+                    isOpen={isOpen}
+                    onClose={onClose}
+                    minTemp={20.2}
+                    maxTemp={26.2}
+                    rainfall={2.2}
+                    evaporation={12.3}
+                    sunshine={8.8}
+                    windGustSpeed={50.2}
+                    windSpeed9am={20.2}
+                    windSpeed3pm={34.5}
+                    humidity9am={90.2}
+                    humidity3pm={82.2}
+                    pressure9am={1200.2}
+                    pressure3pm={1100.56}
+                    cloud9am={12.3}
+                    cloud3pm={18.2}
+                    temp3pm={40.4}
+                    rainToday={1}
+                    cautionText={"NB: Isi form tersebut dengan data cuaca hari ini! (Form di atas hanya contoh)"}
+                />
 
-                            <Flex
-                                mt="40px"
-                            >
-                                <Text
-                                    style={
-                                        {
-                                            fontFamily: "Poppins",
-                                            fontWeight: "medium",
-                                            color: '#323232'
-                                        }
-                                    }
-                                >
-                                    NB: Masukkan kondisi cuaca sekarang untuk prediksi hujan besok.
-                                </Text>
-                            </Flex>
+                {/* <ModalDataTestStarted
+                    isOpen={isOpen}
+                    onClose={onClose}
+                    minTemp={minTempField}
+                    maxTemp={maxTemp}
+                    rainfall={rainfall}
+                    evaporation={evaporation}
+                    sunshine={sunshine}
+                    windGustSpeed={windGustSpeed}
+                    windSpeed9am={windSpeed9am}
+                    windSpeed3pm={windSpeed3pm}
+                    humidity9am={humidity9am}
+                    humidity3pm={humidity3pm}
+                    pressure9am={pressure9am}
+                    pressure3pm={pressure3pm}
+                    cloud9am={cloud9am}
+                    cloud3pm={cloud3pm}
+                    temp3pm={temp3pm}
+                    rainToday={rainToday}
+                    cautionText={"NB: Isi form tersebut dengan data cuaca hari ini!"}
+                /> */}
 
-                        </ModalBody>
-
-                        <ModalFooter style={{ marginTop: "20px" }}>
-                            <Button variant='ghost' mr={3} onClick={onClose}>
-                                Close
-                            </Button>
-                            <Button colorScheme='blue'>Check Result</Button>
-                        </ModalFooter>
-                    </ModalContent>
-                </Modal>
-                
             </Flex>
 
         </HomeLayout>

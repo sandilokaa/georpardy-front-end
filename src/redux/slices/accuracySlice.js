@@ -1,10 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
 import BASE_URL from "../../apiConfig";
+import axios from "axios";
 
-export const fetchData = createAsyncThunk('data/fetchData', async(query) => {
+export const fetchDataAccuracy = createAsyncThunk('data/fetchDataAccuracy', async() => {
     try {
-        const response = await axios(`${BASE_URL["backend-mysql"]}/city?cityName=${query}`);
+        const response = await axios(`${BASE_URL["backend-flask"]}/accuracy`);
         return response.data;
     } catch (error) {
         console.error('API Error:', error.message);
@@ -12,11 +12,11 @@ export const fetchData = createAsyncThunk('data/fetchData', async(query) => {
     }
 });
 
-const searchSlice = createSlice({
-    name: 'search',
+const accuracySlice = createSlice({
+    name: 'accuracy',
     initialState: {
         data: {
-            getedAllCity: []
+            accuracy_ensemble: []
         },
         status: 'idle',
         error: null
@@ -24,18 +24,18 @@ const searchSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(fetchData.pending, (state) => {
+            .addCase(fetchDataAccuracy.pending, (state) => {
                 state.status = 'loading';
             })
-            .addCase(fetchData.fulfilled, (state, action) => {
+            .addCase(fetchDataAccuracy.fulfilled, (state, action) => {
                 state.status = 'succeeded';
-                state.data.getedAllCity = action.payload.data.getedAllCity;
+                state.data.accuracy_ensemble = action.payload.accuracy_ensemble;
             })
-            .addCase(fetchData.rejected, (state, action) => {
+            .addCase(fetchDataAccuracy.rejected, (state, action) => {
                 state.status = 'failed';
                 state.error = action.error.message;
             });
     },
 });
 
-export default searchSlice.reducer;
+export default accuracySlice.reducer;

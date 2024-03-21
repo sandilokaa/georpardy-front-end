@@ -4,7 +4,7 @@ import BASE_URL from "../../apiConfig";
 
 export const fetchDataById = createAsyncThunk('data/fetchDataById', async(cityId) => {
     try {
-        const response = await axios(`${BASE_URL}/city/:${cityId}`);
+        const response = await axios(`${BASE_URL["backend-mysql"]}/city/:${cityId}`);
         return response.data;
     } catch (error) {
         console.error('API Error:', error.message);
