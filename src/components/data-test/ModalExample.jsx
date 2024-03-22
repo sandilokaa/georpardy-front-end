@@ -21,23 +21,6 @@ const ModalDataTestExample = (
     {
         isOpen,
         onClose,
-        minTemp,
-        maxTemp,
-        rainfall,
-        evaporation,
-        sunshine,
-        humidity3pm,
-        humidity9am,
-        pressure9am,
-        pressure3pm,
-        cloud9am,
-        cloud3pm,
-        windGustSpeed,
-        windSpeed9am,
-        windSpeed3pm,
-        temp3pm,
-        rainToday,
-        cautionText
     }
 ) => {
 
@@ -45,7 +28,7 @@ const ModalDataTestExample = (
 
     const dispatch = useDispatch();
 
-    const data = useSelector(state => (state.accuracy.data.accuracy_ensemble?.[0]?.accuracy * 100).toFixed(2));
+    const data = useSelector(state => (state.accuracy.data.accuracy_ensemble[0]?.accuracy * 100).toFixed(2));
 
     /* --------- End Accuracy --------- */
 
@@ -57,34 +40,47 @@ const ModalDataTestExample = (
     const [showForm, setShowForm] = useState(true);
     const [showButton, setShowButton] = useState(true);
 
+    const [values, setValues] = useState({
+        MinTemp: 20.2,
+        MaxTemp: 26.2,
+        Rainfall: 2.2,
+        Evaporation: 12.3,
+        Sunshine: 8.8,
+        WindGustSpeed: 50.2,
+        WindSpeed9am: 20.2,
+        WindSpeed3pm: 34.5,
+        Humidity9am: 90.2,
+        Humidity3pm: 82.2,
+        Pressure9am: 1200.2,
+        Pressure3pm: 1100.56,
+        Cloud9am: 12.3,
+        Cloud3pm: 18.2,
+        Temp3pm: 40.4,
+        RainToday: 1
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setValues(prevState => ({
+            ...prevState,
+            [name]: parseFloat(value)
+        }));
+    };
+
     const onPredictRainfall = async () => {
-        
+
         setLoading(true);
-        
+
         try {
-            
-            const featurePayload = {
-                MinTemp: minTemp,
-                MaxTemp: maxTemp,
-                Rainfall: rainfall, 
-                Evaporation: evaporation,
-                Sunshine: sunshine, 
-                WindGustSpeed: windGustSpeed, 
-                WindSpeed9am: windSpeed9am, 
-                WindSpeed3pm: windSpeed3pm, 
-                Humidity9am: humidity9am, 
-                Humidity3pm: humidity3pm, 
-                Pressure9am: pressure9am, 
-                Pressure3pm: pressure3pm, 
-                Cloud9am: cloud9am, 
-                Cloud3pm: cloud3pm, 
-                Temp3pm: temp3pm,
-                RainToday: rainToday
-            };
 
             const predictRequest = await axios.post(
                 `${BASE_URL["backend-flask"]}/predict`,
-                featurePayload
+                values,
+                { 
+                    headers: {
+                        "Access-Control-Allow-Origin": "*"
+                    }
+                }
             );
 
             const predictResponse = predictRequest.data;
@@ -94,7 +90,7 @@ const ModalDataTestExample = (
             dispatch(fetchDataAccuracy());
 
         } catch (err) {
-            
+
             console.log(err.message);
 
         } finally {
@@ -135,19 +131,19 @@ const ModalDataTestExample = (
                             >
                                 <div>
                                     <p style={{ marginBottom: "6px" }}>MinTemp</p>
-                                    <Input defaultValue={minTemp} />
+                                    <Input name="MinTemp" defaultValue={values.MinTemp} onChange={handleChange}/>
                                 </div>
                                 <div>
                                     <p style={{ marginBottom: "6px" }}>MaxTemp</p>
-                                    <Input defaultValue={maxTemp} />
+                                    <Input name="MaxTemp" defaultValue={values.MaxTemp} onChange={handleChange}/>
                                 </div>
                                 <div>
                                     <p style={{ marginBottom: "6px" }}>Rainfall</p>
-                                    <Input defaultValue={rainfall} />
+                                    <Input name="Rainfall" defaultValue={values.Rainfall} onChange={handleChange}/>
                                 </div>
                                 <div>
                                     <p style={{ marginBottom: "6px" }}>Evaporation</p>
-                                    <Input defaultValue={evaporation} />
+                                    <Input name="Evaporation" defaultValue={values.Evaporation} onChange={handleChange}/>
                                 </div>
                             </Flex>
                             <Flex
@@ -160,19 +156,19 @@ const ModalDataTestExample = (
                             >
                                 <div>
                                     <p style={{ marginBottom: "6px" }}>Sunshine</p>
-                                    <Input defaultValue={sunshine} />
+                                    <Input name="Sunshine" defaultValue={values.Sunshine} onChange={handleChange}/>
                                 </div>
                                 <div>
                                     <p style={{ marginBottom: "6px" }}>WindGustSpeed</p>
-                                    <Input defaultValue={windGustSpeed} />
+                                    <Input name="WindGustSpeed" defaultValue={values.WindGustSpeed} onChange={handleChange}/>
                                 </div>
                                 <div>
                                     <p style={{ marginBottom: "6px" }}>WindSpeed9am</p>
-                                    <Input defaultValue={windSpeed9am} />
+                                    <Input name="WindSpeed9am" defaultValue={values.WindSpeed9am} onChange={handleChange}/>
                                 </div>
                                 <div>
                                     <p style={{ marginBottom: "6px" }}>WindSpeed3pm</p>
-                                    <Input defaultValue={windSpeed3pm} />
+                                    <Input name="WindSpeed3pm" defaultValue={values.WindSpeed3pm} onChange={handleChange}/>
                                 </div>
                             </Flex>
                             <Flex
@@ -185,19 +181,19 @@ const ModalDataTestExample = (
                             >
                                 <div>
                                     <p style={{ marginBottom: "6px" }}>Humidity9am</p>
-                                    <Input defaultValue={humidity9am} />
+                                    <Input name="Humidity9am" defaultValue={values.Humidity9am} onChange={handleChange}/>
                                 </div>
                                 <div>
                                     <p style={{ marginBottom: "6px" }}>Humidity3pm</p>
-                                    <Input defaultValue={humidity3pm} />
+                                    <Input name="Humidity3pm" defaultValue={values.Humidity3pm} onChange={handleChange}/>
                                 </div>
                                 <div>
                                     <p style={{ marginBottom: "6px" }}>Pressure9am</p>
-                                    <Input defaultValue={pressure9am} />
+                                    <Input name="Pressure9am" defaultValue={values.Pressure9am} onChange={handleChange}/>
                                 </div>
                                 <div>
                                     <p style={{ marginBottom: "6px" }}>Pressure3pm</p>
-                                    <Input defaultValue={pressure3pm} />
+                                    <Input name="Pressure3pm" defaultValue={values.Pressure3pm} onChange={handleChange}/>
                                 </div>
                             </Flex>
                             <Flex
@@ -210,19 +206,19 @@ const ModalDataTestExample = (
                             >
                                 <div>
                                     <p style={{ marginBottom: "6px" }}>Cloud9am</p>
-                                    <Input defaultValue={cloud9am} />
+                                    <Input name="CLoud9am" defaultValue={values.Cloud9am} onChange={handleChange}/>
                                 </div>
                                 <div>
                                     <p style={{ marginBottom: "6px" }}>Cloud3pm</p>
-                                    <Input defaultValue={cloud3pm} />
+                                    <Input name="Cloud3pm" defaultValue={values.Cloud3pm} onChange={handleChange}/>
                                 </div>
                                 <div>
                                     <p style={{ marginBottom: "6px" }}>Temp3pm</p>
-                                    <Input defaultValue={temp3pm} />
+                                    <Input name="Temp3pm" defaultValue={values.Temp3pm} onChange={handleChange}/>
                                 </div>
                                 <div>
                                     <p style={{ marginBottom: "6px" }}>RainToday</p>
-                                    <Input defaultValue={rainToday} />
+                                    <Input name="RainToday" defaultValue={values.RainToday} onChange={handleChange}/>
                                 </div>
                             </Flex>
 
@@ -238,7 +234,7 @@ const ModalDataTestExample = (
                                         }
                                     }
                                 >
-                                    {cautionText}
+                                    NB: Isi form tersebut dengan data cuaca hari ini! (Form di atas hanya contoh)
                                 </Text>
                             </Flex>
                         </>
@@ -257,7 +253,7 @@ const ModalDataTestExample = (
                     <Button variant='ghost' mr={3} onClick={() => {
                         onClose();
                         if (!showButton) {
-                            window.location.reload('/data-test')
+                            window.location.reload()
                         }
                     }}>
                         Close

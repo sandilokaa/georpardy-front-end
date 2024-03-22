@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     Box,
     Flex,
@@ -11,11 +11,17 @@ import {
 import HomeLayout from "../../layouts/HomeLayout";
 import DataTestImage from "../../assets/images/data-test-image.png";
 import ModalDataTestExample from "../../components/data-test/ModalExample";
-// import ModalDataTestStarted from "../../components/data-test/ModalStarted";
+import ModalDataTestStarted from "../../components/data-test/ModalStarted";
 
 const DataTest = () => {
 
-    const { isOpen, onOpen, onClose } = useDisclosure();
+    const [isOpenExample, setIsOpenExample] = useState(false);
+    const onOpenExample = () => setIsOpenExample(true);
+    const onCloseExample = () => setIsOpenExample(false);
+    
+    const [isOpenStarted, setIsOpenStarted] = useState(false);
+    const onOpenStarted = () => setIsOpenStarted(true);
+    const onCloseStarted = () => setIsOpenStarted(false);
 
     return (
 
@@ -97,7 +103,7 @@ const DataTest = () => {
                 <Image display="block" w="50%" src={DataTestImage} alt="Geopardy Data Test" />
 
                 <Button
-                    onClick={onOpen}
+                    onClick={onOpenExample}
                     position="absolute"
                     right="26%"
                     top="88%"
@@ -116,6 +122,7 @@ const DataTest = () => {
                 </Button>
 
                 <Button
+                    onClick={onOpenStarted}
                     position="absolute"
                     right="3%"
                     top="88%"
@@ -134,48 +141,14 @@ const DataTest = () => {
                 </Button>
 
                 <ModalDataTestExample
-                    isOpen={isOpen}
-                    onClose={onClose}
-                    minTemp={20.2}
-                    maxTemp={26.2}
-                    rainfall={2.2}
-                    evaporation={12.3}
-                    sunshine={8.8}
-                    windGustSpeed={50.2}
-                    windSpeed9am={20.2}
-                    windSpeed3pm={34.5}
-                    humidity9am={90.2}
-                    humidity3pm={82.2}
-                    pressure9am={1200.2}
-                    pressure3pm={1100.56}
-                    cloud9am={12.3}
-                    cloud3pm={18.2}
-                    temp3pm={40.4}
-                    rainToday={1}
-                    cautionText={"NB: Isi form tersebut dengan data cuaca hari ini! (Form di atas hanya contoh)"}
+                    isOpen={isOpenExample}
+                    onClose={onCloseExample}
                 />
 
-                {/* <ModalDataTestStarted
-                    isOpen={isOpen}
-                    onClose={onClose}
-                    minTemp={minTempField}
-                    maxTemp={maxTemp}
-                    rainfall={rainfall}
-                    evaporation={evaporation}
-                    sunshine={sunshine}
-                    windGustSpeed={windGustSpeed}
-                    windSpeed9am={windSpeed9am}
-                    windSpeed3pm={windSpeed3pm}
-                    humidity9am={humidity9am}
-                    humidity3pm={humidity3pm}
-                    pressure9am={pressure9am}
-                    pressure3pm={pressure3pm}
-                    cloud9am={cloud9am}
-                    cloud3pm={cloud3pm}
-                    temp3pm={temp3pm}
-                    rainToday={rainToday}
-                    cautionText={"NB: Isi form tersebut dengan data cuaca hari ini!"}
-                /> */}
+                <ModalDataTestStarted
+                    isOpen={isOpenStarted}
+                    onClose={onCloseStarted}
+                />
 
             </Flex>
 
