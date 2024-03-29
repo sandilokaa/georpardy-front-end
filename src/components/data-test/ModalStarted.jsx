@@ -71,11 +71,7 @@ const ModalDataTestStarted = (
                 MinTemp: minTempField.current.value,
                 MaxTemp: maxTempField.current.value,
                 Rainfall: rainfallField.current.value,
-                Evaporation: evaporationField.current.value,
-                Sunshine: sunshineField.current.value,
                 WindGustSpeed: windGustSpeedField.current.value,
-                WindSpeed9am: windSpeed9amField.current.value,
-                WindSpeed3pm: windSpeed3pmField.current.value,
                 Humidity9am: humitidy9amField.current.value,
                 Humidity3pm: humidity3pmField.current.value,
                 Pressure9am: pressure9amField.current.value,
@@ -171,33 +167,8 @@ const ModalDataTestStarted = (
                                     <Input ref={rainfallField}/>
                                 </div>
                                 <div>
-                                    <p style={{ marginBottom: "6px" }}>Evaporation</p>
-                                    <Input ref={evaporationField}/>
-                                </div>
-                            </Flex>
-                            <Flex
-                                gap="20px"
-                                justifyContent="center"
-                                mt="20px"
-                                color="#323232"
-                                fontFamily="Poppins"
-                                fontWeight="medium"
-                            >
-                                <div>
-                                    <p style={{ marginBottom: "6px" }}>Sunshine</p>
-                                    <Input ref={sunshineField}/>
-                                </div>
-                                <div>
                                     <p style={{ marginBottom: "6px" }}>WindGustSpeed</p>
                                     <Input ref={windGustSpeedField}/>
-                                </div>
-                                <div>
-                                    <p style={{ marginBottom: "6px" }}>WindSpeed9am</p>
-                                    <Input ref={windSpeed9amField}/>
-                                </div>
-                                <div>
-                                    <p style={{ marginBottom: "6px" }}>WindSpeed3pm</p>
-                                    <Input ref={windSpeed3pmField}/>
                                 </div>
                             </Flex>
                             <Flex
@@ -250,7 +221,6 @@ const ModalDataTestStarted = (
                                     <Input ref={rainTodayField}/>
                                 </div>
                             </Flex>
-
                             <Flex
                                 mt="40px"
                             >
@@ -263,7 +233,7 @@ const ModalDataTestStarted = (
                                         }
                                     }
                                 >
-                                    NB: Isi form tersebut dengan data cuaca hari ini!
+                                    NB: Isi form tersebut dengan data cuaca hari ini, untuk RainToday(1: Rain, 0: No)
                                 </Text>
                             </Flex>
                         </>

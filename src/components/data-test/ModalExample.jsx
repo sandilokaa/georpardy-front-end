@@ -44,11 +44,7 @@ const ModalDataTestExample = (
         MinTemp: 20.2,
         MaxTemp: 26.2,
         Rainfall: 2.2,
-        Evaporation: 12.3,
-        Sunshine: 8.8,
         WindGustSpeed: 50.2,
-        WindSpeed9am: 20.2,
-        WindSpeed3pm: 34.5,
         Humidity9am: 90.2,
         Humidity3pm: 82.2,
         Pressure9am: 1200.2,
@@ -142,34 +138,9 @@ const ModalDataTestExample = (
                                     <Input name="Rainfall" defaultValue={values.Rainfall} onChange={handleChange}/>
                                 </div>
                                 <div>
-                                    <p style={{ marginBottom: "6px" }}>Evaporation</p>
-                                    <Input name="Evaporation" defaultValue={values.Evaporation} onChange={handleChange}/>
-                                </div>
-                            </Flex>
-                            <Flex
-                                gap="20px"
-                                justifyContent="center"
-                                mt="20px"
-                                color="#323232"
-                                fontFamily="Poppins"
-                                fontWeight="medium"
-                            >
-                                <div>
-                                    <p style={{ marginBottom: "6px" }}>Sunshine</p>
-                                    <Input name="Sunshine" defaultValue={values.Sunshine} onChange={handleChange}/>
-                                </div>
-                                <div>
                                     <p style={{ marginBottom: "6px" }}>WindGustSpeed</p>
                                     <Input name="WindGustSpeed" defaultValue={values.WindGustSpeed} onChange={handleChange}/>
                                 </div>
-                                <div>
-                                    <p style={{ marginBottom: "6px" }}>WindSpeed9am</p>
-                                    <Input name="WindSpeed9am" defaultValue={values.WindSpeed9am} onChange={handleChange}/>
-                                </div>
-                                <div>
-                                    <p style={{ marginBottom: "6px" }}>WindSpeed3pm</p>
-                                    <Input name="WindSpeed3pm" defaultValue={values.WindSpeed3pm} onChange={handleChange}/>
-                                </div>
                             </Flex>
                             <Flex
                                 gap="20px"
@@ -179,14 +150,6 @@ const ModalDataTestExample = (
                                 fontFamily="Poppins"
                                 fontWeight="medium"
                             >
-                                <div>
-                                    <p style={{ marginBottom: "6px" }}>Humidity9am</p>
-                                    <Input name="Humidity9am" defaultValue={values.Humidity9am} onChange={handleChange}/>
-                                </div>
-                                <div>
-                                    <p style={{ marginBottom: "6px" }}>Humidity3pm</p>
-                                    <Input name="Humidity3pm" defaultValue={values.Humidity3pm} onChange={handleChange}/>
-                                </div>
                                 <div>
                                     <p style={{ marginBottom: "6px" }}>Pressure9am</p>
                                     <Input name="Pressure9am" defaultValue={values.Pressure9am} onChange={handleChange}/>
@@ -194,6 +157,15 @@ const ModalDataTestExample = (
                                 <div>
                                     <p style={{ marginBottom: "6px" }}>Pressure3pm</p>
                                     <Input name="Pressure3pm" defaultValue={values.Pressure3pm} onChange={handleChange}/>
+                                </div>
+
+                                <div>
+                                    <p style={{ marginBottom: "6px" }}>Humidity9am</p>
+                                    <Input name="Humidity9am" defaultValue={values.Humidity9am} onChange={handleChange}/>
+                                </div>
+                                <div>
+                                    <p style={{ marginBottom: "6px" }}>Humidity3pm</p>
+                                    <Input name="Humidity3pm" defaultValue={values.Humidity3pm} onChange={handleChange}/>
                                 </div>
                             </Flex>
                             <Flex
@@ -221,6 +193,15 @@ const ModalDataTestExample = (
                                     <Input name="RainToday" defaultValue={values.RainToday} onChange={handleChange}/>
                                 </div>
                             </Flex>
+                            <Flex
+                                gap="20px"
+                                justifyContent="center"
+                                mt="20px"
+                                color="#323232"
+                                fontFamily="Poppins"
+                                fontWeight="medium"
+                            >
+                            </Flex>
 
                             <Flex
                                 mt="40px"
@@ -234,7 +215,7 @@ const ModalDataTestExample = (
                                         }
                                     }
                                 >
-                                    NB: Isi form tersebut dengan data cuaca hari ini! (Form di atas hanya contoh)
+                                    NB: Isi form tersebut dengan data cuaca hari ini, untuk RainToday(1: Rain, 0: No)
                                 </Text>
                             </Flex>
                         </>
